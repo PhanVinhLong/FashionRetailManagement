@@ -1,0 +1,233 @@
+﻿<Window x:Class="QuanLyShopThoiTrang.View.PhanQuyenWindow"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:QuanLyShopThoiTrang.View"
+        xmlns:uc="clr-namespace:QuanLyShopThoiTrang.View.CustomUserControl"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        mc:Ignorable="d"
+        DataContext="{StaticResource PhanQuyenVM}"
+        ResizeMode="NoResize"
+        WindowStyle="None"
+        WindowStartupLocation="CenterScreen"
+        Name="window"
+        Title="Phân Quyền" 
+        Height="800" 
+        Width="1400">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadWindowCommand}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <uc:ControlBarUC Tag="{Binding Title, ElementName=window}"></uc:ControlBarUC>
+        </Grid>
+        <Grid Grid.Row="1" Height="auto">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="11*"></RowDefinition>
+                <RowDefinition Height="1*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <materialDesign:Card Grid.Row="1" Margin="25" VerticalAlignment="Stretch" >
+                    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+                        <DataGrid  x:Name="List"  Background="White" AlternatingRowBackground="Orange" CanUserAddRows="False" AutoGenerateColumns="False" ItemsSource="{Binding List}" SelectedItem="{Binding SelectedItem, Mode=TwoWay}" 
+                               >
+                            <DataGrid.Columns>
+
+                                <DataGridTextColumn Header="Vai Trò" Binding="{Binding TenVaiTro}" IsReadOnly="True" DisplayIndex="0" Width="140">
+                                </DataGridTextColumn>
+
+                                <DataGridTemplateColumn Header="QL Khách Hàng" DisplayIndex="1" Width="120" >
+                                    <DataGridTemplateColumn.CellTemplate >
+                                        <DataTemplate>
+                                            <CheckBox
+                                                x:Name="MaterialDesignTextFieldBoxTextBoxEnabledComboBox"
+                                                IsChecked = "{Binding QLKhachHang,UpdateSourceTrigger=PropertyChanged, Mode=TwoWay }"                                               
+                                                Margin="20">
+                                            </CheckBox>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+
+                                <DataGridTemplateColumn Header="QL Nhà CC" DisplayIndex="2" Width="120"  >
+                                    <DataGridTemplateColumn.CellTemplate >
+                                        <DataTemplate>
+                                            <CheckBox
+                                                x:Name="MaterialDesignTextFieldBoxTextBoxEnabledComboBox"
+                                                IsChecked = "{Binding QLNhaCungCap,UpdateSourceTrigger=PropertyChanged, Mode=TwoWay }"                                               
+                                                Margin="20">
+                                            </CheckBox>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+
+                                <DataGridTemplateColumn Header="QL Sản Phẩm" DisplayIndex="3" Width="120"  >
+                                    <DataGridTemplateColumn.CellTemplate >
+                                        <DataTemplate>
+                                            <CheckBox
+                                                x:Name="MaterialDesignTextFieldBoxTextBoxEnabledComboBox"
+                                                IsChecked = "{Binding QLSanPham,UpdateSourceTrigger=PropertyChanged, Mode=TwoWay }"                                               
+                                                Margin="20">
+                                            </CheckBox>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+
+                                <DataGridTemplateColumn Header="QL Hóa Đơn" DisplayIndex="4" Width="120"  >
+                                    <DataGridTemplateColumn.CellTemplate >
+                                        <DataTemplate>
+                                            <CheckBox
+                                                x:Name="MaterialDesignTextFieldBoxTextBoxEnabledComboBox"
+                                                IsChecked = "{Binding QLHoaDon,UpdateSourceTrigger=PropertyChanged, Mode=TwoWay }"                                               
+                                                Margin="20">
+                                            </CheckBox>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+
+                                <DataGridTemplateColumn Header="QL Nhân Viên" DisplayIndex="5" Width="120"  >
+                                    <DataGridTemplateColumn.CellTemplate >
+                                        <DataTemplate>
+                                            <CheckBox
+                                                x:Name="MaterialDesignTextFieldBoxTextBoxEnabledComboBox"
+                                                IsChecked = "{Binding QLNhanVien,UpdateSourceTrigger=PropertyChanged, Mode=TwoWay }"                                               
+                                                Margin="20">
+                                            </CheckBox>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+
+                                <DataGridTemplateColumn Header="QL Loại KH" DisplayIndex="6" Width="120"  >
+                                    <DataGridTemplateColumn.CellTemplate >
+                                        <DataTemplate>
+                                            <CheckBox
+                                                x:Name="MaterialDesignTextFieldBoxTextBoxEnabledComboBox"
+                                                IsChecked = "{Binding QLLoaiKhachHang,UpdateSourceTrigger=PropertyChanged, Mode=TwoWay }"                                               
+                                                Margin="20">
+                                            </CheckBox>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+
+
+                                <DataGridTemplateColumn Header="Lập Hóa Đơn" DisplayIndex="7" Width="120"  >
+                                    <DataGridTemplateColumn.CellTemplate >
+                                        <DataTemplate>
+                                            <CheckBox
+                                                x:Name="MaterialDesignTextFieldBoxTextBoxEnabledComboBox"
+                                                IsChecked = "{Binding LapHoaDon,UpdateSourceTrigger=PropertyChanged, Mode=TwoWay }"                                               
+                                                Margin="20">
+                                            </CheckBox>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+
+                                <DataGridTemplateColumn Header="Lập Phiếu Trả" DisplayIndex="8" Width="120"  >
+                                    <DataGridTemplateColumn.CellTemplate >
+                                        <DataTemplate>
+                                            <CheckBox
+                                                x:Name="MaterialDesignTextFieldBoxTextBoxEnabledComboBox"
+                                                IsChecked = "{Binding LapPhieuTraHang,UpdateSourceTrigger=PropertyChanged, Mode=TwoWay }"                                               
+                                                Margin="20">
+                                            </CheckBox>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+
+                                <DataGridTemplateColumn Header="Lập Phiếu Nhập" DisplayIndex="9" Width="120"  >
+                                    <DataGridTemplateColumn.CellTemplate >
+                                        <DataTemplate>
+                                            <CheckBox
+                                                x:Name="MaterialDesignTextFieldBoxTextBoxEnabledComboBox"
+                                                IsChecked = "{Binding LapPhieuNhapHang,UpdateSourceTrigger=PropertyChanged, Mode=TwoWay }"                                               
+                                                Margin="20">
+                                            </CheckBox>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+
+                                <DataGridTemplateColumn Header="QL Loại SP" DisplayIndex="10" Width="120"  >
+                                    <DataGridTemplateColumn.CellTemplate >
+                                        <DataTemplate>
+                                            <CheckBox
+                                                x:Name="MaterialDesignTextFieldBoxTextBoxEnabledComboBox"
+                                                IsChecked = "{Binding QLLoaiSanPham,UpdateSourceTrigger=PropertyChanged, Mode=TwoWay }"                                               
+                                                Margin="20">
+                                            </CheckBox>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+
+                                <DataGridTemplateColumn Header="Báo Cáo" DisplayIndex="11" Width="120"  >
+                                    <DataGridTemplateColumn.CellTemplate >
+                                        <DataTemplate>
+                                            <CheckBox
+                                                x:Name="MaterialDesignTextFieldBoxTextBoxEnabledComboBox"
+                                                IsChecked = "{Binding BaoCao,UpdateSourceTrigger=PropertyChanged, Mode=TwoWay }"                                               
+                                                Margin="20">
+                                            </CheckBox>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+            
+
+                            <DataGridTemplateColumn Header="QL Size - Màu" DisplayIndex="12" Width="120"  >
+                                <DataGridTemplateColumn.CellTemplate >
+                                    <DataTemplate>
+                                        <CheckBox
+                                                x:Name="MaterialDesignTextFieldBoxTextBoxEnabledComboBox"
+                                                IsChecked = "{Binding QLSizeMau,UpdateSourceTrigger=PropertyChanged, Mode=TwoWay }"                                               
+                                                Margin="20">
+                                        </CheckBox>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+                            <DataGridTemplateColumn Header="QL Vai Trò" DisplayIndex="13" Width="120"  >
+                                <DataGridTemplateColumn.CellTemplate >
+                                    <DataTemplate>
+                                        <CheckBox
+                                                x:Name="MaterialDesignTextFieldBoxTextBoxEnabledComboBox"
+                                                IsChecked = "{Binding QLVaiTro,UpdateSourceTrigger=PropertyChanged, Mode=TwoWay }"                                               
+                                                Margin="20">
+                                        </CheckBox>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </ScrollViewer>
+                </materialDesign:Card>
+
+
+            </Grid>
+            <Grid Grid.Row="1">
+                <Button Command="{Binding CapNhatCommand}" 
+                            CommandParameter="{Binding ElementName=window}"
+                            Style="{StaticResource MaterialDesignRaisedButton}"    
+                            Width="200" 
+                            FontSize="20"
+                        Margin="30 5 0 0"
+                        HorizontalAlignment="Left"
+                            ToolTip="Resource name: MaterialDesignRaisedButton"
+                        Content="Cập Nhật">
+                </Button>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>

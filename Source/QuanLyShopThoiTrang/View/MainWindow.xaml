@@ -1,0 +1,411 @@
+﻿<Window x:Class="QuanLyShopThoiTrang.MainWindow"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+        xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars"
+        xmlns:dxr="http://schemas.devexpress.com/winfx/2008/xaml/ribbon"
+        xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+        xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:QuanLyShopThoiTrang"
+        xmlns:uc="clr-namespace:QuanLyShopThoiTrang.View.CustomUserControl"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        mc:Ignorable="d"
+        ResizeMode="NoResize"
+        WindowStyle="None"
+        WindowStartupLocation="CenterScreen"
+        Name="window"
+        Title="Quản Lý Shop Thời Trang"
+        Height="650" Width="1400">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction
+                Command="{Binding LoadedWindowCommand}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="7*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <uc:ControlBarUC Tag="{Binding Title, ElementName=window}" Loaded="ControlBarUC_Loaded"></uc:ControlBarUC>
+        </Grid>
+        <Grid Grid.Row="1" Margin="0,-25,0,0">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="230" ></ColumnDefinition>
+                <ColumnDefinition  Width="260" ></ColumnDefinition>
+                <ColumnDefinition  Width="210" ></ColumnDefinition>
+                <ColumnDefinition  Width="210" ></ColumnDefinition>
+                <ColumnDefinition  Width="185" ></ColumnDefinition>
+                <ColumnDefinition  Width="200" ></ColumnDefinition>
+                <ColumnDefinition   ></ColumnDefinition>
+
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <Menu  IsMainMenu="True">
+                    <MenuItem    Header="_Khách hàng">
+                        <MenuItem.Icon>
+                            <materialDesign:PackIcon Kind="ContentSave" />
+                        </MenuItem.Icon>
+                        <MenuItem 
+                                    Command="{Binding OpenQuanLyKhachHangCommand}"
+                                    Header="Quản lý khách hàng">
+                            <MenuItem.Icon>
+                                <materialDesign:PackIcon Kind="ContentSave" />
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <Separator />
+                        <MenuItem
+                                    Command="{Binding OpenQuanLyLoaiKhachHangCommand}"
+                                    Header="Quản lý loại khách hàng">
+                            <MenuItem.Icon>
+                                <materialDesign:PackIcon Kind="ContentSave" />
+                            </MenuItem.Icon>
+                        </MenuItem>
+                    </MenuItem>
+                </Menu>
+            </Grid>
+            <Grid Grid.Column="1">
+                <Menu   IsMainMenu="True">
+                    <MenuItem Header="_Nhà cung cấp">
+                        <MenuItem.Icon>
+                            <materialDesign:PackIcon Kind="ContentSave" />
+                        </MenuItem.Icon>
+                        <MenuItem 
+                                Command="{Binding OpenQuanLyNhaCungCapCommand}"
+                                Header="Quản lý nhà cung cấp">
+                            <MenuItem.Icon>
+                                <materialDesign:PackIcon Kind="ContentSave" />
+                            </MenuItem.Icon>
+                        </MenuItem>
+                    </MenuItem>
+                </Menu>
+            </Grid>
+            <Grid Grid.Column="2">
+                <Menu IsMainMenu="True">
+                    <MenuItem   Header="_Sản phẩm">
+                        <MenuItem.Icon>
+                            <materialDesign:PackIcon Kind="ContentSave" />
+                        </MenuItem.Icon>
+
+                        <MenuItem 
+                                Command="{Binding OpenQuanLySanPhamCommand}"
+                                Header="Quản lý Sản phẩm">
+                            <MenuItem.Icon>
+                                <materialDesign:PackIcon Kind="ContentSave" />
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <Separator />
+                        <MenuItem 
+                                Command="{Binding OpenQuanLyKichCoCommand}"
+                                Header="Quản lý kích cỡ">
+                            <MenuItem.Icon>
+                                <materialDesign:PackIcon Kind="ContentSave" />
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <Separator />
+                        <MenuItem 
+                                Command="{Binding OpenQuanLyMauSacCommand}"
+                                Header="Quản lý màu sắc">
+                            <MenuItem.Icon>
+                                <materialDesign:PackIcon Kind="ContentSave" />
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <Separator/>
+                        <MenuItem 
+                                Command="{Binding OpenQuanLyLoaiSanPhamCommand}"
+                                Header="Quản lý loại sản phẩm">
+                            <MenuItem.Icon>
+                                <materialDesign:PackIcon Kind="ContentSave" />
+                            </MenuItem.Icon>
+                        </MenuItem>
+
+                        <Separator/>
+                        <MenuItem 
+                                Command="{Binding OpenQuanLyPhieuNhapCommand}"
+                                Header="Quản lý phiếu Nhập">
+                            <MenuItem.Icon>
+                                <materialDesign:PackIcon Kind="ContentSave" />
+                            </MenuItem.Icon>
+                        </MenuItem>
+                    </MenuItem>
+                </Menu>
+            </Grid>
+            <Grid Grid.Column="3">
+                <Menu  IsMainMenu="True">
+                    <MenuItem   Header="_Nhân viên">
+                        <MenuItem.Icon>
+                            <materialDesign:PackIcon Kind="ContentSave" />
+                        </MenuItem.Icon>
+                        <MenuItem 
+                                Command="{Binding OpenQuanLyNhanVienCommand}"
+                                Header="Quản lý nhân viên">
+                            <MenuItem.Icon>
+                                <materialDesign:PackIcon Kind="ContentSave" />
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <Separator/>
+                        <MenuItem 
+                                Command="{Binding OpenPhanQuyenCommand}"
+                                Header="Cập Nhật Phân Quyền">
+                            <MenuItem.Icon>
+                                <materialDesign:PackIcon Kind="ContentSave" />
+                            </MenuItem.Icon>
+                        </MenuItem>
+
+                    </MenuItem>
+                </Menu>
+            </Grid>
+            <Grid  Grid.Column="4">
+                <Menu IsMainMenu="True">
+                    <MenuItem Header="_Báo cáo   ">
+                        <MenuItem.Icon>
+                            <materialDesign:PackIcon Kind="ContentSave" />
+                        </MenuItem.Icon>
+                        <MenuItem 
+                                Command="{Binding OpenBaoCaoNgayCommand}"
+                                Header="Báo cáo ngày">
+                            <MenuItem.Icon>
+                                <materialDesign:PackIcon Kind="ContentSave" />
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem 
+                                Command="{Binding OpenBaoCaoThangCommand}"
+                                Header="Báo cáo tháng">
+                            <MenuItem.Icon>
+                                <materialDesign:PackIcon Kind="ContentSave" />
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem 
+                                Command="{Binding OpenBaoCaoCommand}"
+                                Header="Báo cáo tổng quan">
+                            <MenuItem.Icon>
+                                <materialDesign:PackIcon Kind="ContentSave" />
+                            </MenuItem.Icon>
+                        </MenuItem>
+                    </MenuItem>
+                </Menu>
+            </Grid>
+            <Grid Grid.Column="5">
+                <Menu  IsMainMenu="True">
+                    <MenuItem  Header="Bán Hàng">
+                        <MenuItem.Icon>
+                            <materialDesign:PackIcon Kind="ContentSave" />
+                        </MenuItem.Icon>
+                        <MenuItem 
+                                Command="{Binding OpenLapHoaDonCommand}"
+                                Header="Lập Hóa Đơn">
+                            <MenuItem.Icon>
+                                <materialDesign:PackIcon Kind="ContentSave" />
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <Separator/>
+                        <MenuItem 
+                                Command="{Binding OpenTraHangCommand}"
+                                Header="Trả Hàng">
+                            <MenuItem.Icon>
+                                <materialDesign:PackIcon Kind="ContentSave" />
+                            </MenuItem.Icon>
+                        </MenuItem>
+
+                        <MenuItem 
+                                Command="{Binding OpenQuanLyHoaDonCommand}"
+                                Header="Quản Lý Hóa Đơn">
+                            <MenuItem.Icon>
+                                <materialDesign:PackIcon Kind="ContentSave" />
+                            </MenuItem.Icon>
+                        </MenuItem>
+                    </MenuItem>
+                </Menu>
+            </Grid>
+
+
+            <Grid Grid.Column="6" Margin="50 0 0 0">
+                <StackPanel>
+
+                    <materialDesign:PopupBox       
+                                Style="{StaticResource MaterialDesignMultiFloatingActionPopupBox}"
+                                PlacementMode="BottomAndAlignRightEdges"
+                                ToolTipService.Placement="Right"
+                               
+                                Background="Red"
+                                ToolTip="PopupBox, Style MaterialDesignMultiFloatingActionPopupBox"
+                                Opened="PopupBox_OnOpened"
+                                Closed="PopupBox_OnClosed" RenderTransformOrigin="-11.935,1.635">
+                        <materialDesign:PopupBox.ToggleContent>
+                            <materialDesign:PackIcon Height="24" Width="24"  Kind="AccountCircle" />
+                        </materialDesign:PopupBox.ToggleContent>
+
+                        <StackPanel>
+                            <Button 
+                            Command="{Binding XemTaiKhoanCommand}" 
+                         ToolTip="Xem tài khoản"
+                            CommandParameter="{Binding ElementName=window}"
+                           >
+                                <materialDesign:PackIcon Height="24" Width="24"  Kind="AccountEdit" />
+                            </Button>
+
+                            <Button 
+                            Command="{Binding DoiMatKhauCommand}" 
+                            ToolTip="Đổi mật khẩu"
+                            CommandParameter="{Binding ElementName=window}"
+                           >
+                                <materialDesign:PackIcon Height="24" Width="24" Kind="Key" />
+                            </Button>
+                            <Button
+                        Command="{Binding LogOutCommand}" 
+                            CommandParameter="{Binding ElementName=window}"                        
+                            ToolTip="Đăng xuất">
+                                <materialDesign:PackIcon  Height="24" Width="24" Kind="Logout" />
+                            </Button>
+
+                        </StackPanel>
+                    </materialDesign:PopupBox>
+                </StackPanel>
+            </Grid>
+        </Grid>
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="3*"></RowDefinition>
+                    <RowDefinition  Height="1*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+
+                    <lvc:AngularGauge Grid.Row="0" Value="{Binding DoanhSo}" FromValue="0" ToValue="{Binding DoanhSoMax}" Width="300" Height="300"
+                                LabelsStep="{Binding DSTB}" TicksStep="1" Wedge="300"
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Center"
+                                          
+                                TicksForeground="BlueViolet" Foreground="White" 
+                                FontWeight="Bold" 
+                                FontSize="16"
+                                SectionsInnerRadius=".5">
+                        <lvc:AngularGauge.Sections>
+                            <lvc:AngularSection  FromValue="0" ToValue="{Binding DoanhSo}" Fill="Green"/>
+                            <lvc:AngularSection  FromValue="{Binding DoanhSo}" ToValue="{Binding ChiTieu}" Fill="Red"/>
+                            <lvc:AngularSection  FromValue="{Binding ChiTieu}" ToValue="{Binding DoanhSoMax}" Fill="Orange"/>
+                        </lvc:AngularGauge.Sections>
+                    </lvc:AngularGauge>
+                </Grid>
+                <Grid Grid.Row="1" Width="500">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="3*"></RowDefinition>
+                        <RowDefinition  Height="1*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <Label Content="{Binding DoanhSoString}" Foreground="Red"  FontSize="15" Height="auto" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    </Grid>
+                    <Grid Grid.Row="1">
+
+                    </Grid>
+                </Grid>
+            </Grid>
+            <Grid Grid.Column="1">
+
+
+                <Grid Grid.Row="0" Width="440" Margin="0 0 0 50">
+                    <lvc:CartesianChart  Series="{Binding SeriesCollection}" LegendLocation="Bottom">
+                        <lvc:CartesianChart.AxisX>
+                            <lvc:Axis Title="Ngày" Labels="{Binding Labels}"></lvc:Axis>
+
+                        </lvc:CartesianChart.AxisX>
+                        <lvc:CartesianChart.AxisY>
+                            <lvc:Axis Title="Doanh Thu. (Triệu VNĐ)" LabelFormatter="{Binding Formatter}"></lvc:Axis>
+                        </lvc:CartesianChart.AxisY>
+
+                        <lvc:CartesianChart.DataTooltip>
+                            <lvc:DefaultTooltip SelectionMode="SharedXValues"></lvc:DefaultTooltip>
+                        </lvc:CartesianChart.DataTooltip>
+                    </lvc:CartesianChart>
+                </Grid>
+
+
+            </Grid>
+
+
+            <Grid Grid.Column="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="5*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="5*"/>
+                </Grid.RowDefinitions>
+
+
+                <Grid Grid.Row="0" >
+                    <Label Content="Bán Chạy Trong Tháng:" Margin="10 0 0 0" Foreground="Red"  FontSize="15" Height="auto" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                </Grid>
+
+
+                <Grid Grid.Row="1" >
+                    <materialDesign:Card  Width="365">
+                        <ScrollViewer VerticalScrollBarVisibility="Auto">
+                            <DataGrid  x:Name="TopList" AlternatingRowBackground="Gray" Height="200" Width="360" CanUserAddRows="False" AutoGenerateColumns="False" ItemsSource="{Binding TopList}" SelectedItem="{Binding SelectedItem, Mode=TwoWay}" 
+                               >
+
+                                <DataGrid.Columns>
+
+                                    <DataGridTextColumn Header="Mã Sản Phẩm" Binding="{Binding IDSanPham}" IsReadOnly="True" DisplayIndex="0" Width="120">
+                                    </DataGridTextColumn>
+
+                                    <DataGridTextColumn Header="Tên Sản Phẩm" Binding="{Binding TenSanPham}" IsReadOnly="True" DisplayIndex="1" Width="170">
+                                    </DataGridTextColumn>
+
+                                    <DataGridTextColumn Header="Số lượng" Binding="{Binding SoLuong}" IsReadOnly="True" DisplayIndex="2" Width="80">
+                                    </DataGridTextColumn>
+
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </ScrollViewer>
+                    </materialDesign:Card>
+                </Grid>
+                <Grid Grid.Row="2" >
+                    <Label Content="Sắp Hết Hàng:" Margin="10 0 0 0" Foreground="Red"  FontSize="15" Height="auto" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                </Grid>
+                <Grid Grid.Row="3"  >
+                    <materialDesign:Card Width="365" >
+                        <ScrollViewer VerticalScrollBarVisibility="Auto">
+                            <DataGrid  x:Name="LackList" AlternatingRowBackground="White" Height="200" CanUserAddRows="False" AutoGenerateColumns="False" ItemsSource="{Binding LackList}" SelectedItem="{Binding SelectedItem, Mode=TwoWay}" 
+                               >
+
+                                <DataGrid.Columns>
+
+                                    <DataGridTextColumn Header="Mã Sản Phẩm" Binding="{Binding IDSanPham}" IsReadOnly="True" DisplayIndex="0" Width="120">
+                                    </DataGridTextColumn>
+
+                                    <DataGridTextColumn Header="Tên Sản Phẩm" Binding="{Binding TenSanPham}" IsReadOnly="True" DisplayIndex="1" Width="170">
+                                    </DataGridTextColumn>
+
+                                    <DataGridTextColumn Header="Số lượng" Binding="{Binding SoLuong}" IsReadOnly="True" DisplayIndex="2" Width="80">
+                                    </DataGridTextColumn>
+
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </ScrollViewer>
+                    </materialDesign:Card>
+
+                </Grid>
+            </Grid>
+        </Grid>
+
+    </Grid>
+</Window>

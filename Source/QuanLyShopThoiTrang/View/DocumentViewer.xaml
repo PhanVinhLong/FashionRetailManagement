@@ -1,0 +1,25 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:QuanLyShopThoiTrang.View"
+        xmlns:uc="clr-namespace:QuanLyShopThoiTrang.View.CustomUserControl"
+        xmlns:dxp="http://schemas.devexpress.com/winfx/2008/xaml/printing" x:Class="QuanLyShopThoiTrang.View.DocumentViewer"
+        mc:Ignorable="d"
+        WindowStyle="None"
+        DataContext="{StaticResource DocumentViewerVM}"
+        Title="DocumentViewer" Height="950" Width="900">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <uc:ControlBarUC Tag="{Binding Title, ElementName=window}"/>
+        </Grid>
+        <Grid Grid.Row="1" Height="auto">
+            <dxp:DocumentPreviewControl x:Name="DocumentPreviewControl" HorizontalAlignment="Left" VerticalAlignment="Top" Height="900" Width="900"/>
+        </Grid>
+    </Grid>
+</Window>

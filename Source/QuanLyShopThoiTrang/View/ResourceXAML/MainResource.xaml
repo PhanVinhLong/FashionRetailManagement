@@ -1,0 +1,35 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:QuanLyShopThoiTrang.View.ResourceXAML"
+                    xmlns:viewmodel="clr-namespace:QuanLyShopThoiTrang.ViewModel">
+    <viewmodel:MainViewModel x:Key="MainVM"></viewmodel:MainViewModel>
+    <viewmodel:DangNhapViewModel x:Key="DangNhapVM"></viewmodel:DangNhapViewModel>
+    <viewmodel:QuanLyKhachHangViewModel x:Key="QuanLyKhachHangVM"></viewmodel:QuanLyKhachHangViewModel>
+    <viewmodel:ThemKhachHangViewModel x:Key="ThemKhachHangVM"></viewmodel:ThemKhachHangViewModel>
+    <viewmodel:QuanLyNhanVienViewModel x:Key="QuanLyNhanVienVM"></viewmodel:QuanLyNhanVienViewModel>
+    <viewmodel:ThemNhanVienViewModel x:Key="ThemNhanVienVM"></viewmodel:ThemNhanVienViewModel>
+    <viewmodel:ThemLoaiKhachHangViewModel x:Key="ThemLoaiKhachHangVM"></viewmodel:ThemLoaiKhachHangViewModel>
+    <viewmodel:QuanLyLoaiKhachHangViewModel x:Key="QuanLyLoaiKhachHangVM"></viewmodel:QuanLyLoaiKhachHangViewModel>
+    <viewmodel:ThemNhaCungCapViewModel x:Key="ThemNhaCungCapVM"></viewmodel:ThemNhaCungCapViewModel>
+    <viewmodel:QuanLyNhaCungCapViewModel x:Key="QuanLyNhaCungCapVM"></viewmodel:QuanLyNhaCungCapViewModel>
+    <viewmodel:ThemKichCoViewModel x:Key="ThemKichCoVM"></viewmodel:ThemKichCoViewModel>
+    <viewmodel:ThemMauSacViewModel x:Key="ThemMauSacVM"></viewmodel:ThemMauSacViewModel>
+    <viewmodel:ThemLoaiSanPhamViewModel x:Key="ThemLoaiSanPhamVM"></viewmodel:ThemLoaiSanPhamViewModel>
+    <viewmodel:QuanLyKichCoViewModel x:Key="QuanLyKichCoVM"></viewmodel:QuanLyKichCoViewModel>
+    <viewmodel:QuanLyMauSacViewModel x:Key="QuanLyMauSacVM"></viewmodel:QuanLyMauSacViewModel>
+    <viewmodel:QuanLyLoaiSanPhamViewModel x:Key="QuanLyLoaiSanPhamVM"></viewmodel:QuanLyLoaiSanPhamViewModel>
+    <viewmodel:ThemSanPhamViewModel x:Key="ThemSanPhamVM"></viewmodel:ThemSanPhamViewModel>
+    <viewmodel:QuanLySanPhamViewModel x:Key="QuanLySanPhamVM"></viewmodel:QuanLySanPhamViewModel>
+    <viewmodel:BaoCaoNgayViewModel x:Key="BaoCaoNgayVM"></viewmodel:BaoCaoNgayViewModel>
+    <viewmodel:BaoCaoThangViewModel x:Key="BaoCaoThangVM"></viewmodel:BaoCaoThangViewModel>
+    <viewmodel:LapHoaDonViewModel x:Key="LapHoaDonVM"></viewmodel:LapHoaDonViewModel>
+    <viewmodel:QuanLyHoaDonViewModel x:Key="QuanLyHoaDonVM"></viewmodel:QuanLyHoaDonViewModel>
+    <viewmodel:BaoCaoViewModel x:Key="BaoCaoVM"></viewmodel:BaoCaoViewModel>
+    <viewmodel:PhanQuyenViewModel x:Key="PhanQuyenVM"></viewmodel:PhanQuyenViewModel>
+    <viewmodel:ThemVaiTroViewModel x:Key="ThemVaiTroVM"></viewmodel:ThemVaiTroViewModel>
+    <viewmodel:QuanLyPhieuNhapViewModel x:Key="QLPhieuNhapVM"></viewmodel:QuanLyPhieuNhapViewModel>
+    <viewmodel:ThemPhieuNhapViewModel x:Key="ThemPhieuNhapVM"></viewmodel:ThemPhieuNhapViewModel>
+    <viewmodel:TraHangViewModel x:Key="TraHangVM"></viewmodel:TraHangViewModel>
+    <viewmodel:DocumentViewerViewModel x:Key="DocumentViewerVM"></viewmodel:DocumentViewerViewModel>
+
+</ResourceDictionary>

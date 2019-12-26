@@ -1,0 +1,108 @@
+﻿<Window x:Class="QuanLyShopThoiTrang.View.QuanLyMauSacWindow"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:QuanLyShopThoiTrang.View"
+        xmlns:uc="clr-namespace:QuanLyShopThoiTrang.View.CustomUserControl"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        mc:Ignorable="d"
+        DataContext="{StaticResource QuanLyMauSacVM}"
+        ResizeMode="NoResize"
+        WindowStyle="None"
+        WindowStartupLocation="CenterScreen"
+        Name="window"
+        Title="Quản lý màu sắc"
+        Height="480" Width="500">
+    <Border CornerRadius="5"
+            BorderBrush="Black"
+            BorderThickness="4">
+        <Border.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="White" />
+            </LinearGradientBrush>
+        </Border.Background>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <uc:ControlBarUC Tag="{Binding Title, ElementName=window}"></uc:ControlBarUC>
+            </Grid>
+            <Grid Grid.Row="1" Height="auto">
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+
+                    <!--các element binding từ selected item-->
+                    <materialDesign:Card Grid.Row="0" Margin="5">
+                        <WrapPanel Margin="0 0 0 10">
+                            <TextBox 
+                                Width="200" 
+                                Text="{Binding Keyword, UpdateSourceTrigger=PropertyChanged}" 
+                                Margin="5 5 15 5" materialDesign:HintAssist.Hint="Tên" 
+                                Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                            <Button Command="{Binding TimKiem}" Content="Tìm" Margin="5" Width="100"></Button>
+                        </WrapPanel>
+                    </materialDesign:Card>
+
+
+
+                    <materialDesign:Card Height="300" Grid.Row="2" Margin="5" VerticalAlignment="Stretch">
+                        <ScrollViewer VerticalScrollBarVisibility="Auto">
+                            <ListView ItemsSource="{Binding DisplayList}" SelectedItem="{Binding SelectedItem, Mode=OneWayToSource}">
+
+                                <ListView.View>
+                                    <GridView>
+                                        <GridViewColumn Header="Mã Màu sắc" DisplayMemberBinding="{Binding IDMauSac}"></GridViewColumn>
+                                        <GridViewColumn Header="Tên Màu sắc" DisplayMemberBinding="{Binding TenMauSac}"></GridViewColumn>
+                                    </GridView>
+                                </ListView.View>
+                            </ListView>
+                        </ScrollViewer>
+                    </materialDesign:Card>
+
+                    <materialDesign:Card Grid.Row="3" Margin="5">
+                        <WrapPanel Margin="0 0 0 0">
+                            <Button 
+                            Command="{Binding Them}" 
+                            CommandParameter="{Binding ElementName=window}"
+                            Content="Thêm" 
+                            Margin="5" 
+                            Width="150"/>
+                            <Button 
+                            Command="{Binding CapNhat}" 
+                            CommandParameter="{Binding ElementName=window}"
+                            Content="Cập nhật" 
+                            Margin="5" 
+                            Width="150"/>
+                            <Button 
+                            Background="Red"
+                            Command="{Binding Xoa}" 
+                            Content="Xoá" 
+                            Margin="5" 
+                            Width="150"/>
+                        </WrapPanel>
+                    </materialDesign:Card>
+                </Grid>
+            </Grid>
+        </Grid>
+    </Border>
+</Window>
