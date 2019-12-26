@@ -90,11 +90,12 @@ public class HoaDonReport : DevExpress.XtraReports.UI.XtraReport
             tongHD += double.Parse(cthd.SoLuong.ToString()) * cthd.DonGia;
         }
 
+        string tenKH = hd.KhachHang == null ? "Khách Vãng Lai" : hd.KhachHang.HoTen;
         txtMaHoaDon.Text = hd.IDHoaDon.ToString();
-        txtTenKH.Text = hd.KhachHang.HoTen.ToString();
-        txtTenKH2.Text = hd.KhachHang.HoTen.ToString();
-        txtMaKH.Text = hd.KhachHang.IDKhachHang.ToString();
-        txtSoDienThoai.Text = hd.KhachHang.SoDienThoai.ToString();
+        txtTenKH.Text = tenKH;
+        txtTenKH2.Text = tenKH;
+        txtMaKH.Text = hd.KhachHang == null ? "" : hd.KhachHang.IDKhachHang.ToString();
+        txtSoDienThoai.Text = hd.KhachHang == null ? "" : hd.KhachHang.SoDienThoai.ToString();
         txtNgayLap.Text = hd.NgayHoaDon.ToShortDateString();
         txtTongHoaDon.Text = String.Format("{0:F3}", tongHD);
         txtTenNhanVien.Text = hd.NhanVien.HoTen;

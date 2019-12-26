@@ -244,15 +244,14 @@ namespace QuanLyShopThoiTrang.ViewModel
 
                        string thongbao = "Đã thanh toán. Tiền thừa " + (TienKhachDua - TongHoaDon).ToString();
 
-                       MessageBox.Show(thongbao, "THÔNG BÁO", MessageBoxButton.OK, MessageBoxImage.Information);
-
+                       DXMessageBox.Show(caption: "THÔNG BÁO", messageBoxText: thongbao, button: MessageBoxButton.OK, icon: MessageBoxImage.Information);
 
                        returnValue = true;
 
                        ////Window pParent = ()p.Parent;
                        ///
                        // Hỏi in hoá đơn
-                       if(DXMessageBox.Show(caption: "THÔNG BÁO", messageBoxText: "Khách chưa đưa đủ tiền", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question)==MessageBoxResult.Yes)
+                       if(DXMessageBox.Show(caption: "THÔNG BÁO", messageBoxText: "In hoá đơn?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Question)==MessageBoxResult.Yes)
                        {
                            DocumentViewer dv = new DocumentViewer(hoadon);
                            dv.ShowDialog();

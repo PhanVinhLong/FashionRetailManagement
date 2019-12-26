@@ -217,6 +217,7 @@
     </Compile>
     <Compile Include="ViewModel\BaoCaoNgayViewModel.cs" />
     <Compile Include="ViewModel\BaoCaoThangViewModel.cs" />
+    <Compile Include="ViewModel\BaoCaoTongQuanViewModel.cs" />
     <Compile Include="ViewModel\BaoCaoViewModel.cs" />
     <Compile Include="ViewModel\CapNhatKhachHangViewModel.cs" />
     <Compile Include="ViewModel\CapNhatKichCoViewModel.cs" />
@@ -260,6 +261,9 @@
     </Compile>
     <Compile Include="View\BaoCaoThangWindow.xaml.cs">
       <DependentUpon>BaoCaoThangWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\BaoCaoTongQuanWindow.xaml.cs">
+      <DependentUpon>BaoCaoTongQuanWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\BaoCaoWindow.xaml.cs">
       <DependentUpon>BaoCaoWindow.xaml</DependentUpon>
@@ -380,6 +384,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\BaoCaoThangWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\BaoCaoTongQuanWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

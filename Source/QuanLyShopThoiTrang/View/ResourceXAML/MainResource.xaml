@@ -31,5 +31,6 @@
     <viewmodel:ThemPhieuNhapViewModel x:Key="ThemPhieuNhapVM"></viewmodel:ThemPhieuNhapViewModel>
     <viewmodel:TraHangViewModel x:Key="TraHangVM"></viewmodel:TraHangViewModel>
     <viewmodel:DocumentViewerViewModel x:Key="DocumentViewerVM"></viewmodel:DocumentViewerViewModel>
+    <viewmodel:BaoCaoTongQuanViewModel x:Key="BaoCaoTongQuanVM"></viewmodel:BaoCaoTongQuanViewModel>
 
 </ResourceDictionary>
