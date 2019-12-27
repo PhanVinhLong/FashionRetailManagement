@@ -18,6 +18,9 @@
         
         ResizeMode="NoResize"
         WindowStyle="None"
+        BorderBrush="Black"
+        BorderThickness="1"
+        AllowsTransparency="True"
         WindowStartupLocation="CenterScreen"
         Name="window"
         Title="Lập Hóa Đơn Bán Hàng" 
@@ -125,6 +128,7 @@
                                 <ColumnDefinition Width="250"></ColumnDefinition>
                                 <ColumnDefinition Width="250"></ColumnDefinition>
                                 <ColumnDefinition Width="250"></ColumnDefinition>
+                                <ColumnDefinition Width="250"></ColumnDefinition>
                             </Grid.ColumnDefinitions>
 
                             <Grid Grid.Column="0" HorizontalAlignment="Stretch" >
@@ -145,10 +149,18 @@
                                     </TextBox.InputBindings>
                                 </TextBox>
                             </Grid>
-                            <Button Command="{Binding ThemSanPham}" Grid.Column="3"   
+                            <Grid Grid.Column="2">
+                                <Button Command="{Binding ThemSanPham}" Grid.Column="3"   
                             Style="{StaticResource MaterialDesignRaisedButton}"    
                             Width="100"  Margin="10 10 0 5"  
                             ToolTip="Resource name: MaterialDesignRaisedButton" Content="Thêm"></Button>
+                            </Grid>
+                            <Grid Grid.Column="3">
+                                <Button Command="{Binding TimKiemSanPham}" Grid.Column="3"   
+                            Style="{StaticResource MaterialDesignRaisedButton}"    
+                            Width="200"  Margin="10 10 0 5"  
+                            ToolTip="Resource name: MaterialDesignRaisedButton" Content="Tìm kiếm sản phẩm"></Button>
+                            </Grid>
                         </Grid>
                     </WrapPanel>
                 </materialDesign:Card>

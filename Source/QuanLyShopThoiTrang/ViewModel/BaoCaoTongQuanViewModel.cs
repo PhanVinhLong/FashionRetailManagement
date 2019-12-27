@@ -17,7 +17,7 @@ namespace QuanLyShopThoiTrang.ViewModel
     {
         private List<HienThiHoaDon> _ListSanPham;
         public List<HienThiHoaDon> ListSanPham { get => _ListSanPham; set { _ListSanPham = value; OnPropertyChanged(); } }
-        public SeriesCollection DataDoanhThu { get; set; }
+        public SeriesCollection DataDoanhThu { get; set; } = new SeriesCollection { new LineSeries { } };
         public string[] Labels { get; set; }
         public Func<double, string> YFormatter { get; set; }
 
@@ -34,8 +34,6 @@ namespace QuanLyShopThoiTrang.ViewModel
             StartDate = DateTime.Now.AddDays(-30);
             EndDate = DateTime.Now;
 
-            DataDoanhThu = new SeriesCollection{ new LineSeries { Title = "Doanh thu" } };
-
             LoadBaoCao = new RelayCommand<Window>((p) => { return true; }, (p) =>
             {
                 LoadDoanhThuSanPham();
@@ -48,7 +46,7 @@ namespace QuanLyShopThoiTrang.ViewModel
 
         void LoadDoanhThu()
         {
-            List<double> temp = new List<double>();
+            List<double> temp = new List<double> { };
 
             for(DateTime dt = StartDate; dt <= EndDate; dt = dt.AddDays(1))
             {
@@ -68,16 +66,22 @@ namespace QuanLyShopThoiTrang.ViewModel
                 temp.Add(tong);
             }
 
-            DataDoanhThu = new SeriesCollection
+            try
             {
+                DataDoanhThu[0] =
                 new LineSeries
                 {
                     Title = "Doanh thu",
                     Values = new ChartValues<double>(temp),
                     LineSmoothness = 0,
                     PointGeometry = null
-                }
-            };
+                };
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            
         }
 
         void LoadDoanhThuSanPham()

@@ -1,4 +1,5 @@
-﻿using QuanLyShopThoiTrang.Model;
+﻿using DevExpress.Xpf.Core;
+using QuanLyShopThoiTrang.Model;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity.Validation;
@@ -33,7 +34,7 @@ namespace QuanLyShopThoiTrang.ViewModel
                 {
                     DataProvider.GetInstance.DB.VaiTroes.Add(vaitro);
                     DataProvider.GetInstance.DB.SaveChanges();
-                    MessageBox.Show("Đã thêm thành công", "THÔNG BÁO", MessageBoxButton.OK, MessageBoxImage.Information);
+                    DXMessageBox.Show(caption: "THÔNG BÁO", messageBoxText: "Đã thêm thành công", button: MessageBoxButton.OK, icon: MessageBoxImage.Information);
                     vaitro = new VaiTro();
                     vaitro.IDVaiTro = TaoIDVaiTro();
                     vaitro.TenVaiTro = "";
@@ -50,7 +51,7 @@ namespace QuanLyShopThoiTrang.ViewModel
                             System.Console.WriteLine("Property: {0} Error: {1}", validationError.PropertyName, validationError.ErrorMessage);
                         }
                     }
-                    MessageBox.Show("Đã xảy ra lỗi", "THÔNG BÁO", MessageBoxButton.OK, MessageBoxImage.Error);
+                    DXMessageBox.Show(caption: "THÔNG BÁO", messageBoxText: "Đã xảy ra lỗi", button: MessageBoxButton.OK, icon: MessageBoxImage.Error);
                 }
             });
 

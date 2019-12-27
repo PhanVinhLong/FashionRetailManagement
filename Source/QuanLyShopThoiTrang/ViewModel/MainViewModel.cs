@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+using DevExpress.Xpf.Core;
 using LiveCharts;
 using LiveCharts.Wpf;
 using QuanLyShopThoiTrang.Model;
@@ -87,7 +88,7 @@ namespace QuanLyShopThoiTrang.ViewModel
                 }
                 else
                 {
-                    MessageBox.Show("Bạn không có quyền truy cập tính năng này");
+                    DXMessageBox.Show(caption: "THÔNG BÁO", messageBoxText: "Bạn không có quyền truy cập tính năng này", button: MessageBoxButton.OK, icon: MessageBoxImage.Error);
                 }
             });
 
@@ -103,7 +104,7 @@ namespace QuanLyShopThoiTrang.ViewModel
                 }
                 else
                 {
-                    MessageBox.Show("Bạn không có quyền truy cập tính năng này");
+                    DXMessageBox.Show(caption: "THÔNG BÁO", messageBoxText: "Bạn không có quyền truy cập tính năng này", button: MessageBoxButton.OK, icon: MessageBoxImage.Error);
                 }
             });
 
@@ -116,7 +117,7 @@ namespace QuanLyShopThoiTrang.ViewModel
                 }
                 else
                 {
-                    MessageBox.Show("Bạn không có quyền truy cập tính năng này");
+                    DXMessageBox.Show(caption: "THÔNG BÁO", messageBoxText: "Bạn không có quyền truy cập tính năng này", button: MessageBoxButton.OK, icon: MessageBoxImage.Error);
                 }
             });
 
@@ -129,7 +130,7 @@ namespace QuanLyShopThoiTrang.ViewModel
                 }
                 else
                 {
-                    MessageBox.Show("Bạn không có quyền truy cập tính năng này");
+                    DXMessageBox.Show(caption: "THÔNG BÁO", messageBoxText: "Bạn không có quyền truy cập tính năng này", button: MessageBoxButton.OK, icon: MessageBoxImage.Error);
                 }
             });
 
@@ -142,7 +143,7 @@ namespace QuanLyShopThoiTrang.ViewModel
                 }
                 else
                 {
-                    MessageBox.Show("Bạn không có quyền truy cập tính năng này");
+                    DXMessageBox.Show(caption: "THÔNG BÁO", messageBoxText: "Bạn không có quyền truy cập tính năng này", button: MessageBoxButton.OK, icon: MessageBoxImage.Error);
                 }
             });
 
@@ -155,13 +156,13 @@ namespace QuanLyShopThoiTrang.ViewModel
                 }
                 else
                 {
-                    MessageBox.Show("Bạn không có quyền truy cập tính năng này");
+                    DXMessageBox.Show(caption: "THÔNG BÁO", messageBoxText: "Bạn không có quyền truy cập tính năng này", button: MessageBoxButton.OK, icon: MessageBoxImage.Error);
                 }
             });
 
             LogOutCommand = new RelayCommand<Window>((p) => { return true; }, (p) =>
             {
-                var result = MessageBox.Show("Bạn có muốn đăng xuất?", "THÔNG BÁO", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+                var result = DXMessageBox.Show(caption: "THÔNG BÁO", messageBoxText: "Bạn có muốn đăng xuất?", button: MessageBoxButton.YesNo, icon: MessageBoxImage.Warning); ;
                 if (result == MessageBoxResult.Yes)
                 {
 
@@ -182,7 +183,7 @@ namespace QuanLyShopThoiTrang.ViewModel
                 }
                 else
                 {
-                    MessageBox.Show("Bạn không có quyền truy cập tính năng này");
+                    DXMessageBox.Show(caption: "THÔNG BÁO", messageBoxText: "Bạn không có quyền truy cập tính năng này", button: MessageBoxButton.OK, icon: MessageBoxImage.Error);
                 }
             });
 
@@ -195,7 +196,7 @@ namespace QuanLyShopThoiTrang.ViewModel
                 }
                 else
                 {
-                    MessageBox.Show("Bạn không có quyền truy cập tính năng này");
+                    DXMessageBox.Show(caption: "THÔNG BÁO", messageBoxText: "Bạn không có quyền truy cập tính năng này", button: MessageBoxButton.OK, icon: MessageBoxImage.Error);
                 }
             });
 
@@ -208,7 +209,7 @@ namespace QuanLyShopThoiTrang.ViewModel
                 }
                 else
                 {
-                    MessageBox.Show("Bạn không có quyền truy cập tính năng này");
+                    DXMessageBox.Show(caption: "THÔNG BÁO", messageBoxText: "Bạn không có quyền truy cập tính năng này", button: MessageBoxButton.OK, icon: MessageBoxImage.Error);
                 }
             });
 
@@ -221,7 +222,7 @@ namespace QuanLyShopThoiTrang.ViewModel
                 }
                 else
                 {
-                    MessageBox.Show("Bạn không có quyền truy cập tính năng này");
+                    DXMessageBox.Show(caption: "THÔNG BÁO", messageBoxText: "Bạn không có quyền truy cập tính năng này", button: MessageBoxButton.OK, icon: MessageBoxImage.Error);
                 }
             });
 
@@ -234,7 +235,7 @@ namespace QuanLyShopThoiTrang.ViewModel
                 }
                 else
                 {
-                    MessageBox.Show("Bạn không có quyền truy cập tính năng này");
+                    DXMessageBox.Show(caption: "THÔNG BÁO", messageBoxText: "Bạn không có quyền truy cập tính năng này", button: MessageBoxButton.OK, icon: MessageBoxImage.Error);
                 }
             });
 
@@ -247,7 +248,7 @@ namespace QuanLyShopThoiTrang.ViewModel
                 }
                 else
                 {
-                    MessageBox.Show("Bạn không có quyền truy cập tính năng này");
+                    DXMessageBox.Show(caption: "THÔNG BÁO", messageBoxText: "Bạn không có quyền truy cập tính năng này", button: MessageBoxButton.OK, icon: MessageBoxImage.Error);
                 }
             });
 
@@ -261,7 +262,7 @@ namespace QuanLyShopThoiTrang.ViewModel
                 }
                 else
                 {
-                    MessageBox.Show("Bạn không có quyền truy cập tính năng này");
+                    DXMessageBox.Show(caption: "THÔNG BÁO", messageBoxText: "Bạn không có quyền truy cập tính năng này", button: MessageBoxButton.OK, icon: MessageBoxImage.Error);
                 }
 
             });
@@ -289,7 +290,7 @@ namespace QuanLyShopThoiTrang.ViewModel
                 }
                 else
                 {
-                    MessageBox.Show("Bạn không có quyền truy cập tính năng này");
+                    DXMessageBox.Show(caption: "THÔNG BÁO", messageBoxText: "Bạn không có quyền truy cập tính năng này", button: MessageBoxButton.OK, icon: MessageBoxImage.Error);
                 }
 
             });

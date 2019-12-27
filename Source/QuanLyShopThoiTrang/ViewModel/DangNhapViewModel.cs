@@ -6,6 +6,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Security.Cryptography;
+using DevExpress.Xpf.Core;
 
 namespace QuanLyShopThoiTrang.ViewModel
 {
@@ -41,7 +42,7 @@ namespace QuanLyShopThoiTrang.ViewModel
                 }
                 else
                 {
-                    MessageBox.Show("Tên đăng nhập hoặc mật khẩu không đúng");
+                    DXMessageBox.Show(caption: "THÔNG BÁO", messageBoxText: "Tên đăng nhập hoặc mật khẩu không đúng", button: MessageBoxButton.OK, icon: MessageBoxImage.Error);
                 }
             });
         }

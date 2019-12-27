@@ -1,4 +1,5 @@
-﻿using QuanLyShopThoiTrang.Model;
+﻿using DevExpress.Xpf.Core;
+using QuanLyShopThoiTrang.Model;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity.Validation;
@@ -60,33 +61,33 @@ namespace QuanLyShopThoiTrang.ViewModel
                     string hashedPassword = ComputeSha256Hash1(password);
                     if (nv.MatKhau != hashedPassword)
                     {
-                        MessageBox.Show("Mật Khẩu Hiện Tại Chưa Đúng", "THÔNG BÁO", MessageBoxButton.OK, MessageBoxImage.Error);
+                        DXMessageBox.Show(caption: "THÔNG BÁO", messageBoxText: "Mật Khẩu Hiện Tại Chưa Đúng", button: MessageBoxButton.OK, icon: MessageBoxImage.Error);
                     }
                     else
                     {
                         if (!Check())
                         {
-                            MessageBox.Show("Mật khẩu chưa hợp lệ. Mật khẩu chỉ bao gồm số và kí tự. Chiều dài mật khẩu phải trên 8", "THÔNG BÁO", MessageBoxButton.OK, MessageBoxImage.Error);
+                            DXMessageBox.Show(caption: "THÔNG BÁO", messageBoxText: "Mật khẩu chưa hợp lệ. Mật khẩu chỉ bao gồm số và kí tự. Chiều dài mật khẩu phải trên 8", button: MessageBoxButton.OK, icon: MessageBoxImage.Error);
                         }
                         else
                         {
                             if (password1 != password2)
                             {
-                                MessageBox.Show("Xác Nhận Mật Khẩu Chưa Đúng", "THÔNG BÁO", MessageBoxButton.OK, MessageBoxImage.Error);
+                                DXMessageBox.Show(caption: "THÔNG BÁO", messageBoxText: "Xác Nhận Mật Khẩu Chưa Đúng", button: MessageBoxButton.OK, icon: MessageBoxImage.Error);
                             }
                             else
                             {
 
                                 if (password1 == password)
                                 {
-                                    MessageBox.Show("Bạn vừa nhập lại mật khẩu cũ", "THÔNG BÁO", MessageBoxButton.OK, MessageBoxImage.Error);
+                                    DXMessageBox.Show(caption: "THÔNG BÁO", messageBoxText: "Bạn vừa nhập lại mật khẩu cũ", button: MessageBoxButton.OK, icon: MessageBoxImage.Error);
                                 }
                                 else
                                 {
                                     var nMS = DataProvider.GetInstance.DB.NhanViens.Where(x => x.IDNhanVien == nv.IDNhanVien).SingleOrDefault();
                                     nMS.MatKhau = ComputeSha256Hash1(password1);
                                     DataProvider.GetInstance.DB.SaveChanges();
-                                    MessageBox.Show("Đã cập nhật thành công", "THÔNG BÁO", MessageBoxButton.OK, MessageBoxImage.Information);
+                                    DXMessageBox.Show(caption: "THÔNG BÁO", messageBoxText: "Đã cập nhật thành công", button: MessageBoxButton.OK, icon: MessageBoxImage.Error);
                                     p.Close();
                                 }
                             }
@@ -105,7 +106,7 @@ namespace QuanLyShopThoiTrang.ViewModel
                             System.Console.WriteLine("Property: {0} Error: {1}", validationError.PropertyName, validationError.ErrorMessage);
                         }
                     }
-                    MessageBox.Show("Đã xảy ra lỗi", "THÔNG BÁO", MessageBoxButton.OK, MessageBoxImage.Error);
+                    DXMessageBox.Show(caption: "THÔNG BÁO", messageBoxText: "Đã xảy ra lỗi", button: MessageBoxButton.OK, icon: MessageBoxImage.Error);
                 }
             });
         }

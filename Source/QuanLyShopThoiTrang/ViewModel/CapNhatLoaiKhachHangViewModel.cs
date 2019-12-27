@@ -1,4 +1,5 @@
-﻿using QuanLyShopThoiTrang.Model;
+﻿using DevExpress.Xpf.Core;
+using QuanLyShopThoiTrang.Model;
 using QuanLyShopThoiTrang.View;
 using System;
 using System.Collections.Generic;
@@ -36,13 +37,13 @@ namespace QuanLyShopThoiTrang.ViewModel
 
                     if (d >= 1 || d < 0)
                     {
-                        MessageBox.Show("Mức Giảm Giá phải có giá trị từ 0 đến 1", "THÔNG BÁO", MessageBoxButton.OK, MessageBoxImage.Information);
+                        DXMessageBox.Show(caption: "THÔNG BÁO", messageBoxText: "Mức Giảm Giá phải có giá trị từ 0 đến 1", button: MessageBoxButton.OK, icon: MessageBoxImage.Error);
                     }
                     else
                     {
                         if (LoaiKhachHang.MoTa == "")
                         {
-                            MessageBox.Show("Vui lòng nhập tên đầy đủ thông tin", "THÔNG BÁO", MessageBoxButton.OK, MessageBoxImage.Information);
+                            DXMessageBox.Show(caption: "THÔNG BÁO", messageBoxText: "Vui lòng nhập tên đầy đủ thông tin", button: MessageBoxButton.OK, icon: MessageBoxImage.Information);
                         }
                         else
                         {
@@ -53,14 +54,14 @@ namespace QuanLyShopThoiTrang.ViewModel
 
                             DataProvider.GetInstance.DB.SaveChanges();
                             (p.Owner as QuanLyLoaiKhachHangWindow).LoadData();
-                            MessageBox.Show("Đã cập nhật thành công", "THÔNG BÁO", MessageBoxButton.OK, MessageBoxImage.Information);
+                            DXMessageBox.Show(caption: "THÔNG BÁO", messageBoxText: "Đã cập nhật thành công", button: MessageBoxButton.OK, icon: MessageBoxImage.Information);
                             p.Close();
                         }
                     }
                 }
                 catch (FormatException e)
                 {
-                    MessageBox.Show("Mức giảm giá chưa hợp lệ", "THÔNG BÁO", MessageBoxButton.OK, MessageBoxImage.Error);
+                    DXMessageBox.Show(caption: "THÔNG BÁO", messageBoxText: "Mức giảm giá chưa hợp lệ", button: MessageBoxButton.OK, icon: MessageBoxImage.Error);
                 }
                 catch (DbEntityValidationException dbEx)
                 {
@@ -71,7 +72,7 @@ namespace QuanLyShopThoiTrang.ViewModel
                             System.Console.WriteLine("Property: {0} Error: {1}", validationError.PropertyName, validationError.ErrorMessage);
                         }
                     }
-                    MessageBox.Show("Đã xảy ra lỗi", "THÔNG BÁO", MessageBoxButton.OK, MessageBoxImage.Error);
+                    DXMessageBox.Show(caption: "THÔNG BÁO", messageBoxText: "Đã xảy ra lỗi", button: MessageBoxButton.OK, icon: MessageBoxImage.Error);
                 }
             });
         }

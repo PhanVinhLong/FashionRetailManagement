@@ -10,8 +10,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using System.Globalization;
-
-
+using DevExpress.Xpf.Core;
 
 namespace QuanLyShopThoiTrang.ViewModel
 {
@@ -140,7 +139,7 @@ namespace QuanLyShopThoiTrang.ViewModel
             TraSanPhamCommand = new RelayCommand<object>(p => true, p =>
             {
                 if (SelectedItem == null)
-                { MessageBox.Show("Chọn một sản phẩm để trả hàng", "THÔNG BÁO", MessageBoxButton.OK, MessageBoxImage.Error); return; }
+                { DXMessageBox.Show(caption: "THÔNG BÁO", messageBoxText: "Chọn một sản phẩm để trả hàng", button: MessageBoxButton.OK, icon: MessageBoxImage.Error); ; return; }
 
                 if (SelectedItem.SoLuong == 1)
                 {
@@ -162,7 +161,7 @@ namespace QuanLyShopThoiTrang.ViewModel
             HoanTacCommand = new RelayCommand<object>(p => true, p =>
             {
                 if (SelectedItemTra == null) {
-                    MessageBox.Show("Chọn một sản phẩm để hoàn tác", "THÔNG BÁO", MessageBoxButton.OK, MessageBoxImage.Error);
+                    DXMessageBox.Show(caption: "THÔNG BÁO", messageBoxText: "Chọn một sản phẩm để để hoàn tác", button: MessageBoxButton.OK, icon: MessageBoxImage.Error);
                     return;
                 }
 
@@ -196,11 +195,11 @@ namespace QuanLyShopThoiTrang.ViewModel
                     KhachHang = null;
                     TongTienCu = 0;
                     TongTienTra = 0;
-                    MessageBox.Show("Không tìm thấy hóa đơn theo ID đã nhập", "THÔNG BÁO", MessageBoxButton.OK, MessageBoxImage.Information);
+                    DXMessageBox.Show(caption: "THÔNG BÁO", messageBoxText: "Không tìm thấy hóa đơn theo ID đã nhập", button: MessageBoxButton.OK, icon: MessageBoxImage.Information);
                 }
                 else if (Database.PhieuTras.Where(pt => HoaDonTra.IDHoaDon == pt.IDHoaDon).SingleOrDefault() != null)
                 {
-                    MessageBox.Show("Hóa đơn của bạn đã được trả hàng trước đó. \nKhông thể trả lần nữa.", "THÔNG BÁO", MessageBoxButton.OK, MessageBoxImage.Information);
+                    DXMessageBox.Show(caption: "THÔNG BÁO", messageBoxText: "Hóa đơn của bạn đã được trả hàng trước đó. \nKhông thể trả lần nữa.", button: MessageBoxButton.OK, icon: MessageBoxImage.Information);
                 }
                 else
                 {
@@ -233,8 +232,7 @@ namespace QuanLyShopThoiTrang.ViewModel
                 {
                     if (DanhSachTra.Count == 0)
                     {
-                        MessageBox.Show("Vui lòng nhập đầy đủ thông tin", "THÔNG BÁO", MessageBoxButton.OK, MessageBoxImage.Error);
-
+                        DXMessageBox.Show(caption: "THÔNG BÁO", messageBoxText: "Vui lòng nhập đầy đủ thông tin", button: MessageBoxButton.OK, icon: MessageBoxImage.Error);
                     }
                     else
                     {
@@ -259,7 +257,7 @@ namespace QuanLyShopThoiTrang.ViewModel
                             ctpt.Add(newCT);
                         }
                         Database.SaveChanges();
-                        MessageBox.Show("Thêm thành công.", "THÔNG BÁO", MessageBoxButton.OK, MessageBoxImage.Information);
+                        DXMessageBox.Show(caption: "THÔNG BÁO", messageBoxText: "Thêm thành công.", button: MessageBoxButton.OK, icon: MessageBoxImage.Information);
                         p.Close();
                     }
                 }
@@ -272,7 +270,7 @@ namespace QuanLyShopThoiTrang.ViewModel
                             System.Console.WriteLine("Property: {0} Error: {1}", validationError.PropertyName, validationError.ErrorMessage);
                         }
                     }
-                    MessageBox.Show("Đã xảy ra lỗi", "THÔNG BÁO", MessageBoxButton.OK, MessageBoxImage.Error);
+                    DXMessageBox.Show(caption: "THÔNG BÁO", messageBoxText: "Đã xảy ra lỗi", button: MessageBoxButton.OK, icon: MessageBoxImage.Error);
                 }
             });
         }

@@ -1,4 +1,5 @@
-﻿using QuanLyShopThoiTrang.Model;
+﻿using DevExpress.Xpf.Core;
+using QuanLyShopThoiTrang.Model;
 using QuanLyShopThoiTrang.View;
 using System;
 using System.Collections.Generic;
@@ -76,6 +77,7 @@ namespace QuanLyShopThoiTrang.ViewModel
         public ICommand ThemSanPham { get; set; }
         public ICommand XoaSanPham { get; set; }
         public ICommand ThanhToan { get; set; }
+        public ICommand TimKiemSanPham { get; set; }
 
         public LapHoaDonViewModel()
         {
@@ -98,6 +100,14 @@ namespace QuanLyShopThoiTrang.ViewModel
                 }
 
              );
+            TimKiemSanPham = new RelayCommand<Window>((p) => { return true; },
+                (p) =>
+                {
+                    QuanLySanPhamWindow window = new QuanLySanPhamWindow();
+                    window.ShowDialog();
+                }
+
+             );
 
 
             ThemSanPham = new RelayCommand<Window>(
@@ -114,10 +124,10 @@ namespace QuanLyShopThoiTrang.ViewModel
                         {
                             int id = Int32.Parse(IDSanPham);
                             if (id < 100000)
-                                MessageBox.Show("Vui lòng kiểm tra lại mã sản phẩm", "THÔNG BÁO", MessageBoxButton.OK, MessageBoxImage.Error);
+                                DXMessageBox.Show(caption: "THÔNG BÁO", messageBoxText: "Vui lòng kiểm tra lại mã sản phẩm", button: MessageBoxButton.OK, icon: MessageBoxImage.Error);
                             else if (SoLuong < 0)
                             {
-                                MessageBox.Show("Vui lòng kiểm tra lại mã sản phẩm", "THÔNG BÁO", MessageBoxButton.OK, MessageBoxImage.Error);
+                                DXMessageBox.Show(caption: "THÔNG BÁO", messageBoxText: "Vui lòng kiểm tra lại số lượng", button: MessageBoxButton.OK, icon: MessageBoxImage.Error);
                             }
                             else
                             {
@@ -126,7 +136,7 @@ namespace QuanLyShopThoiTrang.ViewModel
                                 {
                                     if (sp.SoLuongTon < SoLuong)
                                     {
-                                        MessageBox.Show("Hàng trong kho còn ít hơn số lượng yêu cầu", "THÔNG BÁO", MessageBoxButton.OK, MessageBoxImage.Error);
+                                        DXMessageBox.Show(caption: "THÔNG BÁO", messageBoxText: "Hàng trong kho còn ít hơn số lượng yêu cầu", button: MessageBoxButton.OK, icon: MessageBoxImage.Error);
                                     }
                                     else
                                     {
@@ -169,18 +179,18 @@ namespace QuanLyShopThoiTrang.ViewModel
                                 }
                                 else
                                 {
-                                    MessageBox.Show("Vui lòng kiểm tra lại mã sản phẩm", "THÔNG BÁO", MessageBoxButton.OK, MessageBoxImage.Error);
+                                    DXMessageBox.Show(caption: "THÔNG BÁO", messageBoxText: "Hàng trong kho còn ít hơn số lượng yêu cầu", button: MessageBoxButton.OK, icon: MessageBoxImage.Error);
                                 }
                             }
                         }
                         else
                         {
-                            MessageBox.Show("Vui lòng kiểm tra lại mã sản phẩm", "THÔNG BÁO", MessageBoxButton.OK, MessageBoxImage.Error);
+                            DXMessageBox.Show(caption: "THÔNG BÁO", messageBoxText: "Vui lòng kiểm tra lại mã sản phẩm", button: MessageBoxButton.OK, icon: MessageBoxImage.Error);
                         }
                     }
                     else
                     {
-                        MessageBox.Show("Vui lòng kiểm tra lại mã sản phẩm", "THÔNG BÁO", MessageBoxButton.OK, MessageBoxImage.Error);
+                        DXMessageBox.Show(caption: "THÔNG BÁO", messageBoxText: "Vui lòng kiểm tra lại số lượng", button: MessageBoxButton.OK, icon: MessageBoxImage.Error);
                     }
 
                 }

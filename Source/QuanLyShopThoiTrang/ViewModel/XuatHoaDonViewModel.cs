@@ -152,6 +152,7 @@ namespace QuanLyShopThoiTrang.ViewModel
         public ICommand LostFocus1 { get; set; }
         public ICommand ThemKH { get; set; }
         public ICommand LuuHoaDon { get; set; }
+        public ICommand TimKiemKhachHang { get; set; }
 
         public XuatHoaDonViewModel(int IDNV,
             double Tong, int SoSp, int SH, ObservableCollection<HienThiHoaDon> L, DateTime NgayHD)
@@ -269,6 +270,13 @@ namespace QuanLyShopThoiTrang.ViewModel
             {
 
                 ThemKhachHangWindow wd = new ThemKhachHangWindow();
+                wd.ShowDialog();
+            });
+            TimKiemKhachHang = new RelayCommand<Window>((p) => { return true; },
+            (p) =>
+            {
+
+                QuanLyKhachHangWindow wd = new QuanLyKhachHangWindow();
                 wd.ShowDialog();
             });
         }

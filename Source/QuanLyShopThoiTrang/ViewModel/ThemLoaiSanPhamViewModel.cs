@@ -1,4 +1,5 @@
-﻿using QuanLyShopThoiTrang.Model;
+﻿using DevExpress.Xpf.Core;
+using QuanLyShopThoiTrang.Model;
 using QuanLyShopThoiTrang.View;
 using System;
 using System.Collections.Generic;
@@ -35,13 +36,13 @@ namespace QuanLyShopThoiTrang.ViewModel
                 {
                     if (LoaiSanPham.TenLoaiSanPham == "" || LoaiSanPham.IDNhaCungCap == 0)
                     {
-                        MessageBox.Show("Vui lòng nhập đầy đủ thông tin", "THÔNG BÁO", MessageBoxButton.OK, MessageBoxImage.Error);
+                        DXMessageBox.Show(caption: "THÔNG BÁO", messageBoxText: "Vui lòng nhập đầy đủ thông tin", button: MessageBoxButton.OK, icon: MessageBoxImage.Error);
                     }
                     else
                     {
                         DataProvider.GetInstance.DB.LoaiSanPhams.Add(LoaiSanPham);
                         DataProvider.GetInstance.DB.SaveChanges();
-                        MessageBox.Show("Đã thêm thành công", "THÔNG BÁO", MessageBoxButton.OK, MessageBoxImage.Information);
+                        DXMessageBox.Show(caption: "THÔNG BÁO", messageBoxText: "Đã thêm thành công", button: MessageBoxButton.OK, icon: MessageBoxImage.Information);
                         LoaiSanPham = new LoaiSanPham();
                         LoaiSanPham.IDLoaiSanPham = TaoID();
                         (p.Owner as QuanLyLoaiSanPhamWindow).LoadData();
@@ -58,7 +59,7 @@ namespace QuanLyShopThoiTrang.ViewModel
                             System.Console.WriteLine("Property: {0} Error: {1}", validationError.PropertyName, validationError.ErrorMessage);
                         }
                     }
-                    MessageBox.Show("Đã xảy ra lỗi", "THÔNG BÁO", MessageBoxButton.OK, MessageBoxImage.Error);
+                    DXMessageBox.Show(caption: "THÔNG BÁO", messageBoxText: "Đã xảy ra lỗi", button: MessageBoxButton.OK, icon: MessageBoxImage.Error);
                 }
             });
         }

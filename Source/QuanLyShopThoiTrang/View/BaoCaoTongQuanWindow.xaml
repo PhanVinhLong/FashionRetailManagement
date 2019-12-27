@@ -19,6 +19,9 @@
         DataContext="{StaticResource BaoCaoTongQuanVM}"
         ResizeMode="NoResize"
         WindowStyle="None"
+        BorderBrush="Black"
+        BorderThickness="1"
+        AllowsTransparency="True"
         WindowStartupLocation="CenterScreen"
         Name="window"
         Title="Báo cáo tổng quan"
@@ -81,7 +84,7 @@
                     <Grid Grid.Row="2">
                         <materialDesign:Card  Width="600">
                             <ScrollViewer VerticalScrollBarVisibility="Auto">
-                                <DataGrid  x:Name="TopList" AlternatingRowBackground="Gray" Height="200" Width="600" CanUserAddRows="False" AutoGenerateColumns="False" ItemsSource="{Binding ListSanPham}" SelectedItem="{Binding SelectedItem, Mode=TwoWay}" >
+                                <DataGrid  x:Name="TopList" AlternatingRowBackground="Gray" Height="200" Width="600" CanUserAddRows="False" AutoGenerateColumns="False" ItemsSource="{Binding ListSanPham}" >
                                     <DataGrid.Columns>
                                         <DataGridTextColumn Header="Mã Sản Phẩm" Binding="{Binding IDSanPham}" IsReadOnly="True" DisplayIndex="0" Width="120">
                                         </DataGridTextColumn>

@@ -1,4 +1,5 @@
-﻿using QuanLyShopThoiTrang.Model;
+﻿using DevExpress.Xpf.Core;
+using QuanLyShopThoiTrang.Model;
 using QuanLyShopThoiTrang.View;
 using System;
 using System.Collections.Generic;
@@ -26,7 +27,7 @@ namespace QuanLyShopThoiTrang.ViewModel
                 {
                     if (KichCo.TenKichCo == "")
                     {
-                        MessageBox.Show("Vui lòng nhập tên kích cỡ", "THÔNG BÁO", MessageBoxButton.OK, MessageBoxImage.Information);
+                        DXMessageBox.Show(caption: "THÔNG BÁO", messageBoxText: "Vui lòng nhập tên kích cỡ", button: MessageBoxButton.OK, icon: MessageBoxImage.Information);
                     }
                     else
                     {
@@ -35,7 +36,7 @@ namespace QuanLyShopThoiTrang.ViewModel
 
                         DataProvider.GetInstance.DB.SaveChanges();
                         (p.Owner as QuanLyKichCoWindow).LoadData();
-                        MessageBox.Show("Đã cập nhật thành công", "THÔNG BÁO", MessageBoxButton.OK, MessageBoxImage.Information);
+                        DXMessageBox.Show(caption: "THÔNG BÁO", messageBoxText: "Đã cập nhật thành công", button: MessageBoxButton.OK, icon: MessageBoxImage.Information);
                         p.Close();
                     }
                 }
@@ -48,7 +49,7 @@ namespace QuanLyShopThoiTrang.ViewModel
                             System.Console.WriteLine("Property: {0} Error: {1}", validationError.PropertyName, validationError.ErrorMessage);
                         }
                     }
-                    MessageBox.Show("Đã xảy ra lỗi", "THÔNG BÁO", MessageBoxButton.OK, MessageBoxImage.Error);
+                    DXMessageBox.Show(caption: "THÔNG BÁO", messageBoxText: "Đã xảy ra lỗi", button: MessageBoxButton.OK, icon: MessageBoxImage.Error);
                 }
             });
         }

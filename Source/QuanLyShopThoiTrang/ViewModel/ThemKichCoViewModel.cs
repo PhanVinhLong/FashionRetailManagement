@@ -1,4 +1,5 @@
-﻿using QuanLyShopThoiTrang.Model;
+﻿using DevExpress.Xpf.Core;
+using QuanLyShopThoiTrang.Model;
 using QuanLyShopThoiTrang.View;
 using System;
 using System.Collections.Generic;
@@ -27,13 +28,13 @@ namespace QuanLyShopThoiTrang.ViewModel
                 {
                     if (KichCo.TenKichCo == "")
                     {
-                        MessageBox.Show("Vui lòng nhập tên kích cỡ", "THÔNG BÁO", MessageBoxButton.OK, MessageBoxImage.Information);
+                        DXMessageBox.Show(caption: "THÔNG BÁO", messageBoxText: "Vui lòng nhập tên kích cỡ", button: MessageBoxButton.OK, icon: MessageBoxImage.Information);
                     }
                     else
                     {
                         DataProvider.GetInstance.DB.KichCoes.Add(KichCo);
                         DataProvider.GetInstance.DB.SaveChanges();
-                        MessageBox.Show("Đã thêm thành công", "THÔNG BÁO", MessageBoxButton.OK, MessageBoxImage.Information);
+                        DXMessageBox.Show(caption: "THÔNG BÁO", messageBoxText: "Đã thêm thành công", button: MessageBoxButton.OK, icon: MessageBoxImage.Information);
                         KichCo = new KichCo();
                         KichCo.IDKichCo = TaoIDKichCo();
                         (p.Owner as QuanLyKichCoWindow).LoadData();
@@ -49,7 +50,7 @@ namespace QuanLyShopThoiTrang.ViewModel
                             System.Console.WriteLine("Property: {0} Error: {1}", validationError.PropertyName, validationError.ErrorMessage);
                         }
                     }
-                    MessageBox.Show("Đã xảy ra lỗi", "THÔNG BÁO", MessageBoxButton.OK, MessageBoxImage.Error);
+                    DXMessageBox.Show(caption: "THÔNG BÁO", messageBoxText: "Đã xảy ra lỗi", button: MessageBoxButton.OK, icon: MessageBoxImage.Error);
                 }
             });
         }

@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+using DevExpress.Xpf.Core;
 using QuanLyShopThoiTrang.Model;
 using QuanLyShopThoiTrang.View;
 
@@ -149,7 +150,7 @@ namespace QuanLyShopThoiTrang.ViewModel
                     var Customer = DataProvider.GetInstance.DB.KhachHangs.Where(x => x.IDKhachHang == SelectedItem.IDKhachHang).SingleOrDefault();
                     DataProvider.GetInstance.DB.KhachHangs.Remove(Customer);
                     DataProvider.GetInstance.DB.SaveChanges();
-                    MessageBox.Show("Đã xoá thành công", "THÔNG BÁO", MessageBoxButton.OK, MessageBoxImage.Information);
+                    DXMessageBox.Show(caption: "THÔNG BÁO", messageBoxText: "Đã xoá thành công", button: MessageBoxButton.OK, icon: MessageBoxImage.Information);
                     LoadData();
                 }
                 catch (DbEntityValidationException dbEx)
@@ -161,13 +162,13 @@ namespace QuanLyShopThoiTrang.ViewModel
                             System.Console.WriteLine("Property: {0} Error: {1}", validationError.PropertyName, validationError.ErrorMessage);
                         }
                     }
-                    MessageBox.Show("Đã xảy ra lỗi", "THÔNG BÁO", MessageBoxButton.OK, MessageBoxImage.Error);
+                    DXMessageBox.Show(caption: "THÔNG BÁO", messageBoxText: "Đã xảy ra lỗi", button: MessageBoxButton.OK, icon: MessageBoxImage.Error);
                 }
                 // TO-DO: Need a more clean way
                
                 catch (System.Data.Entity.Infrastructure.DbUpdateException ex)
                 {
-                    MessageBox.Show("Dữ liệu này không thể xóa", "THÔNG BÁO", MessageBoxButton.OK, MessageBoxImage.Error);
+                    DXMessageBox.Show(caption: "THÔNG BÁO", messageBoxText: "Dữ liệu này không thể xóa", button: MessageBoxButton.OK, icon: MessageBoxImage.Error);
                 }
             });
         }

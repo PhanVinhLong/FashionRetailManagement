@@ -1,4 +1,5 @@
-﻿using QuanLyShopThoiTrang.Model;
+﻿using DevExpress.Xpf.Core;
+using QuanLyShopThoiTrang.Model;
 using QuanLyShopThoiTrang.View;
 using System;
 using System.Collections.Generic;
@@ -102,7 +103,7 @@ namespace QuanLyShopThoiTrang.ViewModel
                     var NCC = DataProvider.GetInstance.DB.NhaCungCaps.Where(x => x.IDNhaCungCap == SelectedItem.IDNhaCungCap).SingleOrDefault();
                     DataProvider.GetInstance.DB.NhaCungCaps.Remove(NCC);
                     DataProvider.GetInstance.DB.SaveChanges();
-                    MessageBox.Show("Đã xoá thành công", "THÔNG BÁO", MessageBoxButton.OK, MessageBoxImage.Information);
+                    DXMessageBox.Show(caption: "THÔNG BÁO", messageBoxText: "Đã xoá thành công", button: MessageBoxButton.OK, icon: MessageBoxImage.Information);
                     LoadData();
                 }
                 catch (DbEntityValidationException dbEx)
@@ -114,16 +115,16 @@ namespace QuanLyShopThoiTrang.ViewModel
                             System.Console.WriteLine("Property: {0} Error: {1}", validationError.PropertyName, validationError.ErrorMessage);
                         }
                     }
-                    MessageBox.Show("Đã xảy ra lỗi", "THÔNG BÁO", MessageBoxButton.OK, MessageBoxImage.Error);
+                    DXMessageBox.Show(caption: "THÔNG BÁO", messageBoxText: "Đã xảy ra lỗi", button: MessageBoxButton.OK, icon: MessageBoxImage.Error);
                 }
                 catch(InvalidOperationException ex)
                 {
-                    MessageBox.Show("Dữ liệu này không thể xóa", "THÔNG BÁO", MessageBoxButton.OK, MessageBoxImage.Error);
+                    DXMessageBox.Show(caption: "THÔNG BÁO", messageBoxText: "Dữ liệu này không thể xóa", button: MessageBoxButton.OK, icon: MessageBoxImage.Error);
                 }
                
                  catch (System.Data.Entity.Infrastructure.DbUpdateException ex)
                 {
-                    MessageBox.Show("Dữ liệu này không thể xóa", "THÔNG BÁO", MessageBoxButton.OK, MessageBoxImage.Error);
+                    DXMessageBox.Show(caption: "THÔNG BÁO", messageBoxText: "Dữ liệu này không thể xóa", button: MessageBoxButton.OK, icon: MessageBoxImage.Error);
                 }
             });
         }

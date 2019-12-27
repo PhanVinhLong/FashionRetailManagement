@@ -18,74 +18,69 @@
        
         ResizeMode="NoResize"
         WindowStyle="None"
+        BorderBrush="Black"
+        BorderThickness="1"
+        AllowsTransparency="True"
         WindowStartupLocation="CenterScreen"
         Name="window"
         Title="Lập Hóa Đơn Bán Hàng" 
-        Height="700" 
+        Height="800" 
         Width="600">
-    <Border CornerRadius="5"
-            BorderBrush="Black"
-            BorderThickness="4">
-        <Border.Background>
-            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                <GradientStop Color="White" />
-            </LinearGradientBrush>
-        </Border.Background>
-        <Grid>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <uc:ControlBarUC Tag="{Binding Title, ElementName=window}"></uc:ControlBarUC>
+        </Grid>
+        <Grid Grid.Row="1" Height="auto">
             <Grid.RowDefinitions>
-                <RowDefinition Height="auto"></RowDefinition>
-                <RowDefinition></RowDefinition>
+                <RowDefinition Height="1*"></RowDefinition>
+                <RowDefinition Height="1*"></RowDefinition>
+                <RowDefinition Height="1*"></RowDefinition>
+                <RowDefinition Height="3.5*"></RowDefinition>
+                <RowDefinition Height="1*"></RowDefinition>
+                <RowDefinition Height="1*"></RowDefinition>
             </Grid.RowDefinitions>
-            <Grid Grid.Row="0">
-                <uc:ControlBarUC Tag="{Binding Title, ElementName=window}"></uc:ControlBarUC>
-            </Grid>
-            <Grid Grid.Row="1" Height="auto">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="1*"></RowDefinition>
-                    <RowDefinition Height="1*"></RowDefinition>
-                    <RowDefinition Height="1*"></RowDefinition>
-                    <RowDefinition Height="3.5*"></RowDefinition>
-                    <RowDefinition Height="1*"></RowDefinition>
-                    <RowDefinition Height="1*"></RowDefinition>
-                </Grid.RowDefinitions>
 
-                <Grid Grid.Row="0" Margin="10">
-                    <TextBox IsReadOnly="True" VerticalAlignment="Center" FontSize="15" 
+            <Grid Grid.Row="0" Margin="10">
+                <TextBox IsReadOnly="True" VerticalAlignment="Center" FontSize="15" 
                          Text="{Binding IDHoaDon, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" materialDesign:HintAssist.Hint="Mã Hóa Đơn" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
-                </Grid>
+            </Grid>
 
-                <Grid Grid.Row="1" >
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition></ColumnDefinition>
-                        <ColumnDefinition></ColumnDefinition>
-                    </Grid.ColumnDefinitions>
+            <Grid Grid.Row="1" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
 
-                    <Grid Grid.Column="0" Margin="0">
-                        <TextBox 
+                <Grid Grid.Column="0" Margin="0">
+                    <TextBox 
                         Margin="5" IsReadOnly="True"
                         VerticalAlignment="Center" 
                         FontSize="15" 
                         Text="{Binding SoHang, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"  
                         materialDesign:HintAssist.Hint="Số hàng:" 
                         Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
-                    </Grid>
+                </Grid>
 
-                    <Grid Grid.Column="1">
-                        <TextBox 
+                <Grid Grid.Column="1">
+                    <TextBox 
                     VerticalAlignment="Center" 
                     FontSize="15" IsReadOnly="True"
                     Margin="5"
                     Text="{Binding SoSanPham, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"  
                     materialDesign:HintAssist.Hint="Số sản phẩm:" 
                     Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
-                    </Grid>
-
                 </Grid>
 
+            </Grid>
 
 
-                <Grid Grid.Row="2"   Margin="10">
-                    <TextBox 
+
+            <Grid Grid.Row="2"   Margin="10">
+                <TextBox 
                         VerticalAlignment="Center" 
                         FontSize="20" 
                       Foreground="Red"
@@ -94,48 +89,64 @@
                         Text="{Binding TongHoaDon, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, StringFormat='{}{0:#,0}'}"  
                         materialDesign:HintAssist.Hint="Tổng: " 
                         Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
-                </Grid>
+            </Grid>
 
-                <Grid Grid.Row="3" >
-                    <StackPanel>
-                        <CheckBox
+            <Grid Grid.Row="3" >
+                <StackPanel>
+                    <CheckBox
                
                             x:Name="MaterialDesignTextFieldBoxTextBoxEnabledComboBox"
                             IsChecked = "{Binding Ispatron,UpdateSourceTrigger=PropertyChanged, Mode=TwoWay }"
                             FontSize="15"
                             Margin="5 15 5 0">
-                            Khách Hàng Thân Thiết
-                        </CheckBox>
+                        Khách Hàng Thân Thiết
+                    </CheckBox>
 
-                        <TextBox
-                         Margin="5 15 5 0"
-                       VerticalAlignment="Center" FontSize="15"
-                        Text="{Binding IDKhachHang,UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"  materialDesign:HintAssist.Hint="Mã Khách Hàng:" Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                        IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignTextFieldBoxTextBoxEnabledComboBox}">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid Grid.Column="0">
+                            <TextBox
+                                Margin="5 15 5 0"
+                                VerticalAlignment="Center" FontSize="15"
+                                Text="{Binding IDKhachHang,UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"  materialDesign:HintAssist.Hint="Mã Khách Hàng:" Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignTextFieldBoxTextBoxEnabledComboBox}">
 
-                            <i:Interaction.Triggers>
-                                <i:EventTrigger EventName="LostFocus">
-                                    <i:InvokeCommandAction Command="{Binding LostFocus1}"/>
-                                </i:EventTrigger>
-                            </i:Interaction.Triggers>
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="LostFocus">
+                                        <i:InvokeCommandAction Command="{Binding LostFocus1}"/>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
 
-                        </TextBox>
+                            </TextBox>
+                        </Grid>
+                        <Grid Grid.Column="1">
+                            <Grid>
+                                <Button 
+                                        CommandParameter="{Binding ElementName=window}"
+                                        Content="Tìm kiếm khách hàng"  Width="200" Margin="15" Command="{Binding TimKiemKhachHang}">
+                                </Button>
+                            </Grid>
+                        </Grid>
+                    </Grid>
 
-                        <TextBox
+                    <TextBox
                          Margin="5 15 5 0"
                        VerticalAlignment="Center" FontSize="15"
                         IsReadOnly="True"
                         Text="{Binding TenKhachHang, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"  materialDesign:HintAssist.Hint="Khách Hàng:" Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                         IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignTextFieldBoxTextBoxEnabledComboBox}" />
 
-                        <TextBox
+                    <TextBox
                          Margin="5 15 5 0"
                         IsReadOnly="True"
                        VerticalAlignment="Center" FontSize="15"
                         Text="{Binding MucGiamGia, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"  materialDesign:HintAssist.Hint="Được Giảm:" Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                         IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignTextFieldBoxTextBoxEnabledComboBox}" />
 
-                        <TextBox
+                    <TextBox
                          Margin="5 15 5 0"
                         IsReadOnly="True"
                        VerticalAlignment="Center" FontSize="15"
@@ -143,27 +154,19 @@
                         materialDesign:HintAssist.Hint="Tiền Giảm:" Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                         IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignTextFieldBoxTextBoxEnabledComboBox}" />
 
-                        <Button
-                         Margin="5 15 5 0"
-                        Content="Thêm Khách Hàng" 
-                        Width="300" 
-                        IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignTextFieldBoxTextBoxEnabledComboBox}"
-                        Command="{Binding ThemKH}">
-                        </Button>
-
-                    </StackPanel>
-                </Grid>
+                </StackPanel>
+            </Grid>
 
 
 
-                <Grid Grid.Row="4"  >
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition></ColumnDefinition>
-                        <ColumnDefinition></ColumnDefinition>
-                    </Grid.ColumnDefinitions>
+            <Grid Grid.Row="4"  >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
 
-                    <Grid Grid.Column="0">
-                        <TextBox
+                <Grid Grid.Column="0">
+                    <TextBox
                         Margin="5"
                         IsReadOnly="True"
                        VerticalAlignment="Center"
@@ -171,10 +174,10 @@
                         Foreground="Red"
                         FontWeight="Bold"     
                         Text="{Binding KhachPhaiTra, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, StringFormat='{}{0:#,0}'}"  materialDesign:HintAssist.Hint="Khách Phải Trả:" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
-                    </Grid>
+                </Grid>
 
-                    <Grid Grid.Column="1">
-                        <TextBox
+                <Grid Grid.Column="1">
+                    <TextBox
                         Margin="5"
                         Foreground="Red"
                         FontWeight="Bold" 
@@ -182,23 +185,18 @@
                         FontSize="20"                   
                         Text="{Binding TienKhachDua, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay,StringFormat='{}{0:#,0}'}"  materialDesign:HintAssist.Hint="Khách Đưa:" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
 
-                    </Grid>
-
                 </Grid>
 
-                <Grid Grid.Row="5"  HorizontalAlignment="Stretch" Margin="15 15 15 0">
+            </Grid>
 
-                    <Grid>
-                        <Button 
+            <Grid Grid.Row="5"  HorizontalAlignment="Stretch" Margin="15 15 15 0">
+                <Grid>
+                    <Button 
                         CommandParameter="{Binding ElementName=window}"
                         Content="Thanh Toán"  Width="300" Margin="15" Command="{Binding LuuHoaDon}">
-                        </Button>
-                    </Grid>
-
-
-
+                    </Button>
                 </Grid>
             </Grid>
         </Grid>
-    </Border>
+    </Grid>
 </Window>

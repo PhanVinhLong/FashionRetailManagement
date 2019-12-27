@@ -29,14 +29,18 @@ namespace QuanLyShopThoiTrang.ViewModel
     {
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
-        public List<BaoCaoNhanVien> ListNhanVien { get; set; }
+        private List<BaoCaoNhanVien> _ListNhanVien;
+        public List<BaoCaoNhanVien> ListNhanVien { get => _ListNhanVien; set { _ListNhanVien = value; OnPropertyChanged(); } }
         public ICommand LoadBaoCao { get; set; }
-        public SeriesCollection DataNhanVien { get; set; } = new SeriesCollection { new LineSeries { } };
+        private SeriesCollection _DataNhanVien;
+        public SeriesCollection DataNhanVien { get => _DataNhanVien; set { _DataNhanVien = value; OnPropertyChanged(); } }
 
     public BaoCaoNhanVienViewModel()
         {
             StartDate = DateTime.Now.AddDays(-30);
             EndDate = DateTime.Now;
+
+            DataNhanVien = new SeriesCollection();
 
             LoadBaoCao = new RelayCommand<Window>((p) => { return true; }, (p) =>
             {
@@ -67,8 +71,14 @@ namespace QuanLyShopThoiTrang.ViewModel
                 if (bcnv.DoanhThu > 0)
                     temp.Add(bcnv);
             }
-            ListNhanVien = new List<BaoCaoNhanVien>(temp);
+            if(temp.Count() <= 0)
+            {
+                Console.WriteLine("-----------------");
+                ListNhanVien = new List<BaoCaoNhanVien>(temp);
+                DataNhanVien = new SeriesCollection();
+            }
 
+            ListNhanVien = new List<BaoCaoNhanVien>(temp);
             DataNhanVien = new SeriesCollection { };
             foreach(BaoCaoNhanVien nv in ListNhanVien)
             {

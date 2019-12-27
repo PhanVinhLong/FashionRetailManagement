@@ -20,6 +20,9 @@
         WindowStyle="None"
         WindowStartupLocation="CenterScreen"
         Name="window"
+        BorderBrush="Black"
+        BorderThickness="1"
+        AllowsTransparency="True"
         Title="Thêm loại khách hàng"
         Height="350" Width="500">
     <Border CornerRadius="5"

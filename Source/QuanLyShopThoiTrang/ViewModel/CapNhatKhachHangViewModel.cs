@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+using DevExpress.Xpf.Core;
 using QuanLyShopThoiTrang.Model;
 using QuanLyShopThoiTrang.View;
 
@@ -27,11 +28,11 @@ namespace QuanLyShopThoiTrang.ViewModel
                 {
                     if (KH.HoTen == "" || KH.NamSinh == 0 || KH.GioiTinh == "" || KH.SoDienThoai == "")
                     {
-                        MessageBox.Show("Vui lòng nhập tên đầy đủ thông tin", "THÔNG BÁO", MessageBoxButton.OK, MessageBoxImage.Error);
+                        DXMessageBox.Show(caption: "THÔNG BÁO", messageBoxText: "Vui lòng nhập tên đầy đủ thông tin", button: MessageBoxButton.OK, icon: MessageBoxImage.Error);
                     }
                     else if (!Check(KH))
                     {
-                        MessageBox.Show("Vui lòng kiểm tra lại thông tin", "THÔNG BÁO", MessageBoxButton.OK, MessageBoxImage.Error);
+                        DXMessageBox.Show(caption: "THÔNG BÁO", messageBoxText: "Vui lòng kiểm tra lại thông tin", button: MessageBoxButton.OK, icon: MessageBoxImage.Error);
                     }
                     else
                     {
@@ -44,7 +45,7 @@ namespace QuanLyShopThoiTrang.ViewModel
 
                         DataProvider.GetInstance.DB.SaveChanges();
                         (p.Owner as QuanLyKhachHangWindow).LoadData();
-                        MessageBox.Show("Đã cập nhật thành công", "THÔNG BÁO", MessageBoxButton.OK, MessageBoxImage.Information);
+                        DXMessageBox.Show(caption: "THÔNG BÁO", messageBoxText: "Đã cập nhật thành công", button: MessageBoxButton.OK, icon: MessageBoxImage.Information);
                         p.Close();
                     }
                 }
@@ -57,7 +58,7 @@ namespace QuanLyShopThoiTrang.ViewModel
                             System.Console.WriteLine("Property: {0} Error: {1}", validationError.PropertyName, validationError.ErrorMessage);
                         }
                     }
-                    MessageBox.Show("Đã xảy ra lỗi", "THÔNG BÁO", MessageBoxButton.OK, MessageBoxImage.Error);
+                    DXMessageBox.Show(caption: "THÔNG BÁO", messageBoxText: "Đã xảy ra lỗi", button: MessageBoxButton.OK, icon: MessageBoxImage.Error);
                 }
             });
         }

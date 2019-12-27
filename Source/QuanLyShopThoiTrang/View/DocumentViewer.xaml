@@ -8,6 +8,9 @@
         xmlns:dxp="http://schemas.devexpress.com/winfx/2008/xaml/printing" x:Class="QuanLyShopThoiTrang.View.DocumentViewer"
         mc:Ignorable="d"
         WindowStyle="None"
+        BorderBrush="Black"
+        BorderThickness="1"
+        AllowsTransparency="True"
         DataContext="{StaticResource DocumentViewerVM}"
         Title="DocumentViewer" Height="950" Width="900">
     <Grid>

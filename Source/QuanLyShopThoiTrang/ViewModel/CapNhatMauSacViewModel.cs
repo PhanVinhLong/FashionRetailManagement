@@ -1,4 +1,5 @@
-﻿using QuanLyShopThoiTrang.Model;
+﻿using DevExpress.Xpf.Core;
+using QuanLyShopThoiTrang.Model;
 using QuanLyShopThoiTrang.View;
 using System;
 using System.Collections.Generic;
@@ -27,7 +28,7 @@ namespace QuanLyShopThoiTrang.ViewModel
                 {
                     if (MauSac.TenMauSac == "")
                     {
-                        MessageBox.Show("Vui lòng nhập tên màu sắc", "THÔNG BÁO", MessageBoxButton.OK, MessageBoxImage.Information);
+                        DXMessageBox.Show(caption: "THÔNG BÁO", messageBoxText: "Vui lòng nhập tên màu sắc", button: MessageBoxButton.OK, icon: MessageBoxImage.Error);
                     }
                     else
                     {
@@ -35,7 +36,7 @@ namespace QuanLyShopThoiTrang.ViewModel
                         nMS.TenMauSac = MauSac.TenMauSac;
 
                         DataProvider.GetInstance.DB.SaveChanges();
-                        MessageBox.Show("Đã cập nhật thành công", "THÔNG BÁO", MessageBoxButton.OK, MessageBoxImage.Information);
+                        DXMessageBox.Show(caption: "THÔNG BÁO", messageBoxText: "Đã cập nhật thành công", button: MessageBoxButton.OK, icon: MessageBoxImage.Information);
                         (p.Owner as QuanLyMauSacWindow).LoadData();
                         p.Close();
                     }
@@ -49,7 +50,7 @@ namespace QuanLyShopThoiTrang.ViewModel
                             System.Console.WriteLine("Property: {0} Error: {1}", validationError.PropertyName, validationError.ErrorMessage);
                         }
                     }
-                    MessageBox.Show("Đã xảy ra lỗi", "THÔNG BÁO", MessageBoxButton.OK, MessageBoxImage.Error);
+                    DXMessageBox.Show(caption: "THÔNG BÁO", messageBoxText: "Đã xảy ra lỗi", button: MessageBoxButton.OK, icon: MessageBoxImage.Error);
                 }
             });
         }

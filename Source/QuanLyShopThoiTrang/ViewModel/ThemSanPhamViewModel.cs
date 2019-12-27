@@ -1,4 +1,5 @@
-﻿using QuanLyShopThoiTrang.Model;
+﻿using DevExpress.Xpf.Core;
+using QuanLyShopThoiTrang.Model;
 using QuanLyShopThoiTrang.View;
 using System;
 using System.Collections.Generic;
@@ -45,7 +46,7 @@ namespace QuanLyShopThoiTrang.ViewModel
                 {
                     if (SanPham.IDKichCo == 0 || SanPham.IDLoaiSanPham == 0 || SanPham.IDMauSac == 0)
                     {
-                        MessageBox.Show("Vui lòng kiểm tra thông tin đã nhập.", "THÔNG BÁO", MessageBoxButton.OK, MessageBoxImage.Information);
+                        DXMessageBox.Show(caption: "THÔNG BÁO", messageBoxText: "Vui lòng kiểm tra thông tin đã nhập.", button: MessageBoxButton.OK, icon: MessageBoxImage.Information);
                     }
                     else
                     {
@@ -54,7 +55,7 @@ namespace QuanLyShopThoiTrang.ViewModel
                             SanPham.DonGia /= 1000;
                         DataProvider.GetInstance.DB.SanPhams.Add(SanPham);
                         DataProvider.GetInstance.DB.SaveChanges();
-                        MessageBox.Show("Đã thêm thành công", "THÔNG BÁO", MessageBoxButton.OK, MessageBoxImage.Information);
+                        DXMessageBox.Show(caption: "THÔNG BÁO", messageBoxText: "Đã thêm thành công", button: MessageBoxButton.OK, icon: MessageBoxImage.Information);
                         SanPham = new SanPham();
                         SanPham.IDSanPham = TaoIDSanPham();
                        
@@ -71,7 +72,7 @@ namespace QuanLyShopThoiTrang.ViewModel
                             System.Console.WriteLine("Property: {0} Error: {1}", validationError.PropertyName, validationError.ErrorMessage);
                         }
                     }
-                    MessageBox.Show("Đã xảy ra lỗi", "THÔNG BÁO", MessageBoxButton.OK, MessageBoxImage.Error);
+                    DXMessageBox.Show(caption: "THÔNG BÁO", messageBoxText: "Đã xảy ra lỗi", button: MessageBoxButton.OK, icon: MessageBoxImage.Error);
                 }
             });
         }

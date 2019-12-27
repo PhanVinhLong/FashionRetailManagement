@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Data.OleDb;
 using System.Data;
 using QuanLyShopThoiTrang.View;
+using DevExpress.Xpf.Core;
 
 namespace QuanLyShopThoiTrang.ViewModel
 {
@@ -140,11 +141,11 @@ namespace QuanLyShopThoiTrang.ViewModel
             {
                 if (SoLuong <= 0)
                 {
-                    System.Windows.MessageBox.Show("Vui lòng nhập số lượng", "THÔNG BÁO", MessageBoxButton.OK, MessageBoxImage.Error);
+                    DXMessageBox.Show(caption: "THÔNG BÁO", messageBoxText: "Vui lòng nhập số lượng", button: MessageBoxButton.OK, icon: MessageBoxImage.Error);
                 }
                 else if (GiaNhap <= 0)
                 {
-                    System.Windows.MessageBox.Show("Vui lòng nhập giá nhập", "THÔNG BÁO", MessageBoxButton.OK, MessageBoxImage.Error);
+                    DXMessageBox.Show(caption: "THÔNG BÁO", messageBoxText: "Vui lòng nhập giá nhập", button: MessageBoxButton.OK, icon: MessageBoxImage.Error);
                 }
                 else
                 {
@@ -185,7 +186,7 @@ namespace QuanLyShopThoiTrang.ViewModel
 
                     if (FilePath.Contains(".xls") == false)
                     {
-                        System.Windows.MessageBox.Show("Không thể mở file", "THÔNG BÁO", MessageBoxButton.OK, MessageBoxImage.Error);
+                        DXMessageBox.Show(caption: "THÔNG BÁO", messageBoxText: "Không thể mở file", button: MessageBoxButton.OK, icon: MessageBoxImage.Error);
                     }
                     else
                     {
@@ -236,7 +237,7 @@ namespace QuanLyShopThoiTrang.ViewModel
                 {
                     if (SelectedNCC == null || ListSanPhamNhap.Count == 0)
                     {
-                        System.Windows.MessageBox.Show("Vui lòng nhập đầy đủ thông tin", "THÔNG BÁO", MessageBoxButton.OK, MessageBoxImage.Error);
+                        DXMessageBox.Show(caption: "THÔNG BÁO", messageBoxText: "Vui lòng nhập đầy đủ thông tin", button: MessageBoxButton.OK, icon: MessageBoxImage.Error);
                     }
                     else
                     {
@@ -269,7 +270,7 @@ namespace QuanLyShopThoiTrang.ViewModel
                         }
                         DataProvider.GetInstance.DB.SaveChanges();
 
-                        System.Windows.MessageBox.Show("Đã thêm thành công", "THÔNG BÁO", MessageBoxButton.OK, MessageBoxImage.Information);
+                        DXMessageBox.Show(caption: "THÔNG BÁO", messageBoxText: "Đã thêm thành công", button: MessageBoxButton.OK, icon: MessageBoxImage.Information);
                       //  (p.Owner as QuanLyPhieuNhapWindow).LoadData();
                         p.Close();
                         
@@ -285,7 +286,7 @@ namespace QuanLyShopThoiTrang.ViewModel
                             System.Console.WriteLine("Property: {0} Error: {1}", validationError.PropertyName, validationError.ErrorMessage);
                         }
                     }
-                    System.Windows.MessageBox.Show("Đã xảy ra lỗi", "THÔNG BÁO", MessageBoxButton.OK, MessageBoxImage.Error);
+                    DXMessageBox.Show(caption: "THÔNG BÁO", messageBoxText: "Đã xảy ra lỗi", button: MessageBoxButton.OK, icon: MessageBoxImage.Error);
                 }
             });
 
@@ -293,7 +294,7 @@ namespace QuanLyShopThoiTrang.ViewModel
             {
                 if (SelectedSanPham == null)
                 {
-                    System.Windows.MessageBox.Show("Abc");
+                    DXMessageBox.Show(caption: "THÔNG BÁO", messageBoxText: "Chưa chọn sản phẩm", button: MessageBoxButton.OK, icon: MessageBoxImage.Error);
                 }
                 else
                 {
@@ -344,7 +345,7 @@ namespace QuanLyShopThoiTrang.ViewModel
             }
             catch (Exception ex)
             {
-                System.Windows.MessageBox.Show("Đã xảy ra lỗi " + ex.Message + " ở dòng " + index.ToString(), "THÔNG BÁO", MessageBoxButton.OK, MessageBoxImage.Error);
+                DXMessageBox.Show(caption: "THÔNG BÁO", messageBoxText: "Đã xảy ra lỗi " + ex.Message + " ở dòng " + index.ToString(), button: MessageBoxButton.OK, icon: MessageBoxImage.Error);
                 return false;
             }
         }
