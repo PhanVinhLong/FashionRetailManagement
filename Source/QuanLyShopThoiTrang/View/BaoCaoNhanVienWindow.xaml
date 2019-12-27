@@ -1,4 +1,4 @@
-﻿<Window x:Class="QuanLyShopThoiTrang.View.BaoCaoTongQuanWindow"
+﻿<Window x:Class="QuanLyShopThoiTrang.View.BaoCaoNhanVienWindow"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         TextElement.FontWeight="Regular"
@@ -16,13 +16,13 @@
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
         mc:Ignorable="d"
-        DataContext="{StaticResource BaoCaoTongQuanVM}"
+        DataContext="{StaticResource BaoCaoNhanVienVM}"
         ResizeMode="NoResize"
         WindowStyle="None"
         WindowStartupLocation="CenterScreen"
         Name="window"
-        Title="Báo cáo tổng quan"
-        Height="600" Width="900">
+        Title="Báo cáo nhân viên"
+        Height="500" Width="900">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"></RowDefinition>
@@ -41,8 +41,6 @@
                     </Grid.Resources>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="40"></RowDefinition>
-                        <RowDefinition Height="40"></RowDefinition>
-                        <RowDefinition></RowDefinition>
                         <RowDefinition Height="40"></RowDefinition>
                         <RowDefinition></RowDefinition>
                     </Grid.RowDefinitions>
@@ -76,39 +74,32 @@
                         </Grid>
                     </Grid>
                     <Grid Grid.Row="1">
-                        <Label Content="Doanh thu theo mặt hàng" Foreground="Red"  FontSize="15" Height="auto" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        <Label Content="Doanh thu theo nhân viên" Foreground="Red"  FontSize="15" Height="auto" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                     </Grid>
                     <Grid Grid.Row="2">
-                        <materialDesign:Card  Width="600">
-                            <ScrollViewer VerticalScrollBarVisibility="Auto">
-                                <DataGrid  x:Name="TopList" AlternatingRowBackground="Gray" Height="200" Width="600" CanUserAddRows="False" AutoGenerateColumns="False" ItemsSource="{Binding ListSanPham}" SelectedItem="{Binding SelectedItem, Mode=TwoWay}" >
-                                    <DataGrid.Columns>
-                                        <DataGridTextColumn Header="Mã Sản Phẩm" Binding="{Binding IDSanPham}" IsReadOnly="True" DisplayIndex="0" Width="120">
-                                        </DataGridTextColumn>
-                                        <DataGridTextColumn Header="Tên Sản Phẩm" Binding="{Binding TenSanPham}" IsReadOnly="True" DisplayIndex="1" Width="170">
-                                        </DataGridTextColumn>
-                                        <DataGridTextColumn Header="Số lượng" Binding="{Binding SoLuong}" IsReadOnly="True" DisplayIndex="2" Width="80">
-                                        </DataGridTextColumn>
-                                        <DataGridTextColumn Header="Doanh thu" Binding="{Binding ThanhTien}" IsReadOnly="True" DisplayIndex="3" Width="120">
-                                        </DataGridTextColumn>
-                                    </DataGrid.Columns>
-                                </DataGrid>
-                            </ScrollViewer>
-                        </materialDesign:Card>
-                    </Grid>
-                    <Grid Grid.Row="3">
-                        <Label Content="Doanh thu theo thời gian" Foreground="Red"  FontSize="15" Height="auto" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                    </Grid>
-                    <Grid Grid.Row="4">
-                        <Grid>
-                            <lvc:CartesianChart Series="{Binding DataDoanhThu}" LegendLocation="Right" >
-                                <lvc:CartesianChart.AxisY>
-                                    <lvc:Axis Title="Doanh thu" MinValue="0"></lvc:Axis>
-                                </lvc:CartesianChart.AxisY>
-                                <lvc:CartesianChart.AxisX>
-                                    <lvc:Axis Title="Thời gian"></lvc:Axis>
-                                </lvc:CartesianChart.AxisX>
-                            </lvc:CartesianChart>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid Grid.Column="0">
+                            <materialDesign:Card  Width="400">
+                                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                                    <DataGrid  x:Name="TopList" AlternatingRowBackground="Gray" Height="300" Width="400" CanUserAddRows="False" AutoGenerateColumns="False" ItemsSource="{Binding ListNhanVien}" >
+                                        <DataGrid.Columns>
+                                            <DataGridTextColumn Header="Mã Nhân Viên" Binding="{Binding IDNhanVien}" IsReadOnly="True" DisplayIndex="0" Width="120">
+                                            </DataGridTextColumn>
+                                            <DataGridTextColumn Header="Tên Nhân Viên" Binding="{Binding HoTen}" IsReadOnly="True" DisplayIndex="1" Width="170">
+                                            </DataGridTextColumn>
+                                            <DataGridTextColumn Header="Doanh thu" Binding="{Binding DoanhThu}" IsReadOnly="True" DisplayIndex="2" Width="120">
+                                            </DataGridTextColumn>
+                                        </DataGrid.Columns>
+                                    </DataGrid>
+                                </ScrollViewer>
+                            </materialDesign:Card>
+                        </Grid>
+                        <Grid Grid.Column="1">
+                            <lvc:PieChart LegendLocation="Bottom" Series="{Binding DataNhanVien}" Hoverable="False" DataTooltip="{x:Null}" Height="300">
+                            </lvc:PieChart>
                         </Grid>
                     </Grid>
                 </Grid>

@@ -215,10 +215,10 @@
     <Compile Include="Model\VaiTro.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="ViewModel\BaoCaoNgayViewModel.cs" />
-    <Compile Include="ViewModel\BaoCaoThangViewModel.cs" />
+    <Compile Include="ViewModel\BaoCaoNhanVienViewModel.cs" />
     <Compile Include="ViewModel\BaoCaoTongQuanViewModel.cs" />
     <Compile Include="ViewModel\BaoCaoViewModel.cs" />
+    <Compile Include="ViewModel\BaseViewModel.cs" />
     <Compile Include="ViewModel\CapNhatKhachHangViewModel.cs" />
     <Compile Include="ViewModel\CapNhatKichCoViewModel.cs" />
     <Compile Include="ViewModel\CapNhatLoaiKhachHangViewModel.cs" />
@@ -256,11 +256,8 @@
     <Compile Include="ViewModel\XemThongTinHoaDonViewModel.cs" />
     <Compile Include="ViewModel\XemThongTinNhanVienViewModel.cs" />
     <Compile Include="ViewModel\XuatHoaDonViewModel.cs" />
-    <Compile Include="View\BaoCaoNgayWindow.xaml.cs">
-      <DependentUpon>BaoCaoNgayWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\BaoCaoThangWindow.xaml.cs">
-      <DependentUpon>BaoCaoThangWindow.xaml</DependentUpon>
+    <Compile Include="View\BaoCaoNhanVienWindow.xaml.cs">
+      <DependentUpon>BaoCaoNhanVienWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\BaoCaoTongQuanWindow.xaml.cs">
       <DependentUpon>BaoCaoTongQuanWindow.xaml</DependentUpon>
@@ -379,11 +376,7 @@
     <Compile Include="View\XuatHoaDonWindow.xaml.cs">
       <DependentUpon>XuatHoaDonWindow.xaml</DependentUpon>
     </Compile>
-    <Page Include="View\BaoCaoNgayWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\BaoCaoThangWindow.xaml">
+    <Page Include="View\BaoCaoNhanVienWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -503,7 +496,6 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="ViewModel\BaseViewModel.cs" />
     <Compile Include="ViewModel\ControlBarViewModel.cs" />
     <Compile Include="ViewModel\DangNhapViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />

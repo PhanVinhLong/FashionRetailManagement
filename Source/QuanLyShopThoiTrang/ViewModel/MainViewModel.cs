@@ -242,7 +242,7 @@ namespace QuanLyShopThoiTrang.ViewModel
             {
                 if (vaitro.BaoCao)
                 {
-                    BaoCaoNgayWindow window = new BaoCaoNgayWindow();
+                    BaoCaoTongQuanWindow window = new BaoCaoTongQuanWindow();
                     window.ShowDialog();
                 }
                 else
@@ -256,7 +256,7 @@ namespace QuanLyShopThoiTrang.ViewModel
 
                 if (vaitro.BaoCao)
                 {
-                    BaoCaoThangWindow window = new BaoCaoThangWindow();
+                    BaoCaoNhanVienWindow window = new BaoCaoNhanVienWindow();
                     window.ShowDialog();
                 }
                 else
@@ -266,19 +266,19 @@ namespace QuanLyShopThoiTrang.ViewModel
 
             });
 
-            OpenBaoCaoCommand = new RelayCommand<Window>((p) => { return true; }, (p) =>
-            {
-                if (vaitro.BaoCao)
-                {
-                    BaoCaoWindow window = new BaoCaoWindow();
-                    window.ShowDialog();
-                }
-                else
-                {
-                    MessageBox.Show("Bạn không có quyền truy cập tính năng này");
-                }
+            //OpenBaoCaoCommand = new RelayCommand<Window>((p) => { return true; }, (p) =>
+            //{
+            //    if (vaitro.BaoCao)
+            //    {
+            //        BaoCaoWindow window = new BaoCaoWindow();
+            //        window.ShowDialog();
+            //    }
+            //    else
+            //    {
+            //        MessageBox.Show("Bạn không có quyền truy cập tính năng này");
+            //    }
 
-            });
+            //});
 
             OpenQuanLyPhieuNhapCommand = new RelayCommand<Window>((p) => { return true; }, (p) =>
             {
@@ -416,7 +416,6 @@ namespace QuanLyShopThoiTrang.ViewModel
             List<HienThiHoaDon> temp = new List<HienThiHoaDon>();
             List<HoaDon> hd = new List<HoaDon>(DataProvider.GetInstance.DB.HoaDons.Where(x => x.NgayHoaDon.Month == DateTime.Now.Month &&
             x.NgayHoaDon.Year == DateTime.Now.Year));
-
 
             if (hd.Count != 0)
             {

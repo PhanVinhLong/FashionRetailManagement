@@ -20,11 +20,8 @@
     <viewmodel:QuanLyLoaiSanPhamViewModel x:Key="QuanLyLoaiSanPhamVM"></viewmodel:QuanLyLoaiSanPhamViewModel>
     <viewmodel:ThemSanPhamViewModel x:Key="ThemSanPhamVM"></viewmodel:ThemSanPhamViewModel>
     <viewmodel:QuanLySanPhamViewModel x:Key="QuanLySanPhamVM"></viewmodel:QuanLySanPhamViewModel>
-    <viewmodel:BaoCaoNgayViewModel x:Key="BaoCaoNgayVM"></viewmodel:BaoCaoNgayViewModel>
-    <viewmodel:BaoCaoThangViewModel x:Key="BaoCaoThangVM"></viewmodel:BaoCaoThangViewModel>
     <viewmodel:LapHoaDonViewModel x:Key="LapHoaDonVM"></viewmodel:LapHoaDonViewModel>
     <viewmodel:QuanLyHoaDonViewModel x:Key="QuanLyHoaDonVM"></viewmodel:QuanLyHoaDonViewModel>
-    <viewmodel:BaoCaoViewModel x:Key="BaoCaoVM"></viewmodel:BaoCaoViewModel>
     <viewmodel:PhanQuyenViewModel x:Key="PhanQuyenVM"></viewmodel:PhanQuyenViewModel>
     <viewmodel:ThemVaiTroViewModel x:Key="ThemVaiTroVM"></viewmodel:ThemVaiTroViewModel>
     <viewmodel:QuanLyPhieuNhapViewModel x:Key="QLPhieuNhapVM"></viewmodel:QuanLyPhieuNhapViewModel>
@@ -32,5 +29,5 @@
     <viewmodel:TraHangViewModel x:Key="TraHangVM"></viewmodel:TraHangViewModel>
     <viewmodel:DocumentViewerViewModel x:Key="DocumentViewerVM"></viewmodel:DocumentViewerViewModel>
     <viewmodel:BaoCaoTongQuanViewModel x:Key="BaoCaoTongQuanVM"></viewmodel:BaoCaoTongQuanViewModel>
-
+    <viewmodel:BaoCaoNhanVienViewModel x:Key="BaoCaoNhanVienVM"></viewmodel:BaoCaoNhanVienViewModel>
 </ResourceDictionary>

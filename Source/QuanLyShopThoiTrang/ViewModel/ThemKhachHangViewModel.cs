@@ -16,6 +16,7 @@ namespace QuanLyShopThoiTrang.ViewModel
         private KhachHang _KH;
         public KhachHang KH { get => _KH; set { _KH = value; OnPropertyChanged(); } }
         public ICommand ThemKhachHangCommand { get; set; }
+
         public ThemKhachHangViewModel()
         {
             KH = new KhachHang();

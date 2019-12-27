@@ -102,13 +102,14 @@ namespace QuanLyShopThoiTrang.ViewModel
 
         private bool Check(NhanVien nv)
         {
-            //string name = nv.HoTen;
-            //foreach(char c in name)
-            //{
-            //    int a = (int)c;
-            //    if (!((a >= 65 && a <= 90) || (a >= 97 && a <= 122) || (a == 32)))
-            //        return false;
-            //}
+            string name = nv.HoTen;
+            foreach (char c in name)
+            {
+                int a = (int)c;
+                //if (!((a >= 65 && a <= 90) || (a >= 97 && a <= 122) || (a == 32)))
+                if ((a >= 33 && a <= 64) || (a >= 91 && a <= 96) || (a >= 123 && a <= 126))
+                    return false;
+            }
 
             string phone = nv.SoDienThoai;
             foreach(char c in phone)

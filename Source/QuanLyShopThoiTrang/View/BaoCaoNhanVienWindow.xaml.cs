@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace QuanLyShopThoiTrang.View
 {
     /// <summary>
-    /// Interaction logic for BaoCaoNgayWindow.xaml
+    /// Interaction logic for BaoCaoNhanVienWindow.xaml
     /// </summary>
-    public partial class BaoCaoNgayWindow : Window
+    public partial class BaoCaoNhanVienWindow : Window
     {
-        public BaoCaoNgayWindow()
+        public BaoCaoNhanVienWindow()
         {
             InitializeComponent();
         }

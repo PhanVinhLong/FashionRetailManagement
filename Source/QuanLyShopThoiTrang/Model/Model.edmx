@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="QLShopModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="QLShopModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="ChiTietHoaDon">
           <Key>
             <PropertyRef Name="IDHoaDon" />
@@ -140,6 +140,7 @@
           <Property Name="IDLoaiSanPham" Type="int" Nullable="false" />
           <Property Name="DonGia" Type="float" Nullable="false" />
           <Property Name="SoLuongTon" Type="int" Nullable="false" />
+          <Property Name="GiaNhap" Type="int" />
         </EntityType>
         <EntityType Name="VaiTro">
           <Key>
@@ -435,8 +436,7 @@
             <End Role="PhieuTra1" EntitySet="PhieuTra" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="QLShopModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -606,6 +606,7 @@
           <NavigationProperty Name="KichCo" Relationship="Self.FK__SanPham__IDKichC__5FB337D6" FromRole="SanPham" ToRole="KichCo" />
           <NavigationProperty Name="LoaiSanPham" Relationship="Self.FK__SanPham__IDLoaiS__60A75C0F" FromRole="SanPham" ToRole="LoaiSanPham" />
           <NavigationProperty Name="MauSac" Relationship="Self.FK__SanPham__IDMauSa__619B8048" FromRole="SanPham" ToRole="MauSac" />
+          <Property Name="GiaNhap" Type="Int32" />
         </EntityType>
         <EntityType Name="VaiTro">
           <Key>
@@ -1046,6 +1047,7 @@
           <EntitySetMapping Name="SanPhams">
             <EntityTypeMapping TypeName="QLShopModel.SanPham">
               <MappingFragment StoreEntitySet="SanPham">
+                <ScalarProperty Name="GiaNhap" ColumnName="GiaNhap" />
                 <ScalarProperty Name="IDSanPham" ColumnName="IDSanPham" />
                 <ScalarProperty Name="IDMauSac" ColumnName="IDMauSac" />
                 <ScalarProperty Name="IDKichCo" ColumnName="IDKichCo" />
